@@ -32,10 +32,7 @@ export default class BranchViewController extends ViewController {
     [type: string]: Array<BranchViewController>
   }
 
-  constructor(
-    topic: Topic,
-    parent: SheetViewController | BranchViewController,
-  ) {
+  constructor(topic: Topic, parent: SheetViewController | BranchViewController) {
     super(parent)
     this._topic = topic
     this._children = {}
@@ -52,7 +49,7 @@ export default class BranchViewController extends ViewController {
 
     const addSubbranches = (type: TopicType) => {
       const topics = this.model.getChildrenByType(type)
-      topics.forEach((topic) => {
+      topics.forEach(topic => {
         const branch = new BranchViewController(topic, this)
         this._addSubbranch(branch, { type })
         branch.init()
@@ -68,23 +65,13 @@ export default class BranchViewController extends ViewController {
   }
 
   private _initStyle() {
-    this.view.spacingMajor = parseInt(
-      StyleManager.getStyleValue(this, StyleKey.SPACING_MAJOR) || '0',
-    )
-    this.view.spacingMinor = parseInt(
-      StyleManager.getStyleValue(this, StyleKey.SPACING_MINOR) || '0',
-    )
+    this.view.spacingMajor = parseInt(StyleManager.getStyleValue(this, StyleKey.SPACING_MAJOR) || '0')
+    this.view.spacingMinor = parseInt(StyleManager.getStyleValue(this, StyleKey.SPACING_MINOR) || '0')
 
-    this.connectionViewController.lineShape = StyleManager.getStyleValue(
-      this,
-      StyleKey.LINE_CLASS,
-    )
+    this.connectionViewController.lineShape = StyleManager.getStyleValue(this, StyleKey.LINE_CLASS)
   }
 
-  private _addSubbranch(
-    subbranch: BranchViewController,
-    options: { type: TopicType },
-  ) {
+  private _addSubbranch(subbranch: BranchViewController, options: { type: TopicType }) {
     subbranch.sheetViewController = this.sheetViewController
 
     const type = options.type || TopicType.ATTACHED
@@ -128,9 +115,7 @@ export default class BranchViewController extends ViewController {
       position,
       direction: dire,
       topicBounds,
-      lineWidth: parseInt(
-        StyleManager.getStyleValue(this, StyleKey.LINE_WIDTH) || '0',
-      ),
+      lineWidth: parseInt(StyleManager.getStyleValue(this, StyleKey.LINE_WIDTH) || '0'),
       borderColor: StyleManager.getStyleValue(this, StyleKey.BORDER_LINE_COLOR),
       fillColor: StyleManager.getStyleValue(this, StyleKey.FILL_COLOR),
     }
@@ -150,8 +135,8 @@ export default class BranchViewController extends ViewController {
 
     this.bounds.x = this.position.x - this.bounds.width / 2
     this.bounds.y = this.position.y - this.bounds.height / 2
-
-    this.getChildrenByType(TopicType.ATTACHED).forEach((child) => {
+    console.log(this.bounds)
+    this.getChildrenByType(TopicType.ATTACHED).forEach(child => {
       child._initInner()
     })
 
@@ -195,10 +180,7 @@ export default class BranchViewController extends ViewController {
       const parentStructure = parent.getStructureObject()
 
       if (modelStructureClass) {
-        const structures = parentStructure.getAvailableChildStructure(
-          parent,
-          this,
-        )
+        const structures = parentStructure.getAvailableChildStructure(parent, this)
         if (structures.indexOf(modelStructureClass) > -1) {
           this._structureClass = modelStructureClass
           return

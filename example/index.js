@@ -19,7 +19,6 @@ document.getElementById('input-dialog').addEventListener('input', function () {
       Promise.resolve(fileName),
       jszip.loadAsync(e.target.result).then(zip => {
         loadFromXMind(zip).then(result => {
-          console.log(result)
           load(result.sheets)
         })
       }),
@@ -44,6 +43,8 @@ function load(data) {
   renderer.render()
   const rendererBounds = renderer.bounds
 
+  console.log(rendererBounds)
+
   const clientWidth = container.clientWidth
   const clientHeight = container.clientHeight
   const width = Math.max(clientWidth, rendererBounds.width)
@@ -58,6 +59,4 @@ function load(data) {
 
   renderer.translate(width + rendererBounds.x, height + rendererBounds.y)
   container.scrollTo(width - clientWidth / 2, height - clientHeight / 2)
-  renderer.svg.scale(2)
-  // console.log(renderer.svg.size())
 }

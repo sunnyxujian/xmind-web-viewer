@@ -15,7 +15,6 @@ const FULL_PATH = 'full-path'
 export function loadFromXMind(zip: JSZip) {
   if (zip?.files) {
     const files = zip.files
-    debugger
     if (CONTENT_JSON_PATH in files) {
       return _fromJSON(zip)
     } else if (CONTENT_XML_PATH in files) {
@@ -34,15 +33,15 @@ function _fromJSON(zip: JSZip) {
 
     contentZipObj
       .async('text')
-      .then((jsonStr) => {
+      .then(jsonStr => {
         return JSON.parse(jsonStr)
       })
-      .then((content) => {
+      .then(content => {
         resolve({
           sheets: content,
         })
       })
-      .catch((e) => {
+      .catch(e => {
         reject(e)
       })
   })
@@ -69,11 +68,11 @@ function _fromXML(zip: JSZip) {
     }
     manifestZipObj
       .async('text')
-      .then((xmlStr) => {
+      .then(xmlStr => {
         const dom = domParser.parseFromString(xmlStr, 'application/xml')
         return _parseManifestDOM(dom)
       })
-      .then((manifest) => {
+      .then(manifest => {
         const jobs = []
         jobs.push(Promise.resolve(manifest))
 
@@ -83,7 +82,7 @@ function _fromXML(zip: JSZip) {
           return reject('Must have a content.xml file.')
         }
         jobs.push(
-          contentZipObj.async('text').then((xmlStr) => {
+          contentZipObj.async('text').then(xmlStr => {
             return domParser.parseFromString(xmlStr, 'application/xml')
           }),
         )
@@ -92,7 +91,7 @@ function _fromXML(zip: JSZip) {
         const stylesZipObj = zip.file(STYLES_XML_PATH)
         if (stylesZipObj) {
           jobs.push(
-            stylesZipObj.async('text').then((xmlStr) => {
+            stylesZipObj.async('text').then(xmlStr => {
               return domParser.parseFromString(xmlStr, 'application/xml')
             }),
           )
@@ -103,13 +102,9 @@ function _fromXML(zip: JSZip) {
         Promise.all(jobs).then(([manifest, contentDOM, stylesDOM]) => {
           const sheets: SheetData[] = []
           const parseSheetPromises = []
-          Array.from(contentDOM.getElementsByTagName('sheet')).forEach(
-            (sheetDOM: Document) => {
-              parseSheetPromises.push(
-                _parseSheetDOM(sheetDOM, sheets, { stylesDOM }),
-              )
-            },
-          )
+          Array.from(contentDOM.getElementsByTagName('sheet')).forEach((sheetDOM: Document) => {
+            parseSheetPromises.push(_parseSheetDOM(sheetDOM, sheets, { stylesDOM }))
+          })
 
           Promise.all(parseSheetPromises).then(() => {
             if (!sheets.length) {
@@ -122,7 +117,7 @@ function _fromXML(zip: JSZip) {
           })
         })
       })
-      .catch((e) => {
+      .catch(e => {
         reject(e)
       })
   })
@@ -132,21 +127,15 @@ function _parseManifestDOM(dom: Document) {
   const manifestJSON = { [FILE_ENTRIES]: {} }
 
   const fileEntries = dom.getElementsByTagName(FILE_ENTRY)
-  Array.from(fileEntries).forEach((fileEntry) => {
+  Array.from(fileEntries).forEach(fileEntry => {
     const fullPath = fileEntry.getAttribute(FULL_PATH)
     manifestJSON[FILE_ENTRIES][fullPath] = {}
   })
   return manifestJSON
 }
 
-function _parseSheetDOM(
-  sheetDOM: Document,
-  sheets: SheetData[],
-  options?: { stylesDOM: Document },
-) {
-  const sheetTitleDOMArr = Array.from(sheetDOM.childNodes).filter(
-    (item) => item.nodeName?.toLowerCase() == 'title',
-  )
+function _parseSheetDOM(sheetDOM: Document, sheets: SheetData[], options?: { stylesDOM: Document }) {
+  const sheetTitleDOMArr = Array.from(sheetDOM.childNodes).filter(item => item.nodeName?.toLowerCase() == 'title')
   const sheetTitleDOM = sheetTitleDOMArr.length > 0 && sheetTitleDOMArr[0]
   const title = sheetTitleDOM?.firstChild?.nodeValue || 'Missing Sheet Title'
   const sheet: any = {
@@ -157,21 +146,19 @@ function _parseSheetDOM(
 
   fillTheme()
 
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     Promise.all([fillTopic()]).then(resolve)
   })
 
   function fillTopic() {
-    return new Promise((resolve) => {
-      parseTopicDOM(sheetDOM.getElementsByTagName('topic')[0]).then(
-        (topicInfo: TopicData) => {
-          sheet.rootTopic = topicInfo
-          resolve()
-        },
-      )
+    return new Promise(resolve => {
+      parseTopicDOM(sheetDOM.getElementsByTagName('topic')[0]).then((topicInfo: TopicData) => {
+        sheet.rootTopic = topicInfo
+        resolve()
+      })
 
       function parseTopicDOM(topicDOM: Element) {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
           const promises = []
           const topicData: any = {}
 
@@ -198,12 +185,11 @@ function _parseSheetDOM(
             const stylesDOM = options?.stylesDOM
 
             const userStyleDOM = stylesDOM?.getElementById(styleId)
-            const styleProps =
-              userStyleDOM?.getElementsByTagName('topic-properties')
+            const styleProps = userStyleDOM?.getElementsByTagName('topic-properties')
             if (styleProps && styleProps[0]) {
               topicData.style = { type: 'topic' }
               const props = {}
-              Array.from(styleProps[0].attributes).forEach((attrNode) => {
+              Array.from(styleProps[0].attributes).forEach(attrNode => {
                 props[attrNode.name] = attrNode.value
               })
 
@@ -212,25 +198,18 @@ function _parseSheetDOM(
           }
 
           // extensions
-          const extensionsDOMArr = Array.from(topicDOM.childNodes).filter(
-            (item) => item.nodeName?.toLowerCase() == 'extensions',
-          )
+          const extensionsDOMArr = Array.from(topicDOM.childNodes).filter(item => item.nodeName?.toLowerCase() == 'extensions')
           if (extensionsDOMArr.length > 0) {
             const extensionsDOM = extensionsDOMArr[0] as Element
-            const extensionDOMArr =
-              extensionsDOM.getElementsByTagName('extension')
+            const extensionDOMArr = extensionsDOM.getElementsByTagName('extension')
             if (extensionDOMArr) {
               const extensionsResult = []
-              Array.from(extensionDOMArr).forEach((extensionDOM) => {
+              Array.from(extensionDOMArr).forEach(extensionDOM => {
                 const extensionData: any = {}
 
                 extensionData.provider = extensionDOM.getAttribute('provider')
-                const contentContainer =
-                  extensionDOM.getElementsByTagName('content') &&
-                  extensionDOM.getElementsByTagName('content')[0]
-                const contentDomArray = Array.from(
-                  contentContainer.childNodes,
-                ).filter((item) => item.nodeType === item.ELEMENT_NODE)
+                const contentContainer = extensionDOM.getElementsByTagName('content') && extensionDOM.getElementsByTagName('content')[0]
+                const contentDomArray = Array.from(contentContainer.childNodes).filter(item => item.nodeType === item.ELEMENT_NODE)
                 const contentResult = []
                 contentDomArray.forEach((contentDom: Element) => {
                   contentResult.push({
@@ -257,9 +236,7 @@ function _parseSheetDOM(
             }
 
             let content: any
-            let extensionChildrenDOM = Array.from(
-              extensionContentDOM.childNodes,
-            ).filter((item) => item.nodeType === item.ELEMENT_NODE)
+            let extensionChildrenDOM = Array.from(extensionContentDOM.childNodes).filter(item => item.nodeType === item.ELEMENT_NODE)
             if (extensionChildrenDOM && extensionChildrenDOM.length) {
               content = []
               extensionChildrenDOM.forEach((childDOM: Element) => {
@@ -281,34 +258,25 @@ function _parseSheetDOM(
 
           // children
           let attached: TopicData[] = []
-          const childrenDom = Array.from(topicDOM.childNodes).filter(
-            (item) => item.nodeName?.toLowerCase() == 'children',
-          )
+          const childrenDom = Array.from(topicDOM.childNodes).filter(item => item.nodeName?.toLowerCase() == 'children')
           if (childrenDom.length > 0) {
             topicData.children = {}
             parseChildDOM('attached')
           }
 
           function parseChildDOM(type: string) {
-            const topicsDOM = Array.from(childrenDom[0].childNodes).find(
-              (item: Element) => {
-                return (
-                  item.nodeName?.toLowerCase() == 'topics' &&
-                  item.getAttribute('type') == type
-                )
-              },
-            )
+            const topicsDOM = Array.from(childrenDom[0].childNodes).find((item: Element) => {
+              return item.nodeName?.toLowerCase() == 'topics' && item.getAttribute('type') == type
+            })
 
             if (topicsDOM) {
               topicData.children[type] = []
-              const topicsDOMArr = Array.from(topicsDOM.childNodes).filter(
-                (item) => item.nodeName?.toLowerCase() == 'topic',
-              )
+              const topicsDOMArr = Array.from(topicsDOM.childNodes).filter(item => item.nodeName?.toLowerCase() == 'topic')
 
               for (let index in topicsDOMArr) {
                 const childDOM = topicsDOMArr[index] as Element
                 promises.push(
-                  parseTopicDOM(childDOM).then((childTopicInfo) => {
+                  parseTopicDOM(childDOM).then(childTopicInfo => {
                     topicData.children[type][index] = childTopicInfo
                   }),
                 )
@@ -336,10 +304,8 @@ function _parseSheetDOM(
 
     const theme = {}
 
-    const defaultStyleDomArray = Array.from(
-      masterStylesContainer.getElementsByTagName('default-style'),
-    )
-    defaultStyleDomArray.forEach((dsDom) => {
+    const defaultStyleDomArray = Array.from(masterStylesContainer.getElementsByTagName('default-style'))
+    defaultStyleDomArray.forEach(dsDom => {
       const styleId = dsDom.getAttribute('style-id')
       const styleFamily = dsDom.getAttribute('style-family')
 
@@ -356,9 +322,7 @@ function _parseSheetDOM(
 
       amStyleDom.getElementsByTagName(type + '-properties') &&
         amStyleDom.getElementsByTagName(type + '-properties')[0] &&
-        Array.from(
-          amStyleDom.getElementsByTagName(type + '-properties')[0].attributes,
-        ).forEach((attrNode) => {
+        Array.from(amStyleDom.getElementsByTagName(type + '-properties')[0].attributes).forEach(attrNode => {
           theme[styleFamily].properties[attrNode.name] = attrNode.value
         })
     })
@@ -367,13 +331,10 @@ function _parseSheetDOM(
   }
 
   function UUID() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
-      /[xy]/g,
-      function (c) {
-        var r = (Math.random() * 16) | 0,
-          v = c == 'x' ? r : (r & 0x3) | 0x8
-        return v.toString(16)
-      },
-    )
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = (Math.random() * 16) | 0,
+        v = c == 'x' ? r : (r & 0x3) | 0x8
+      return v.toString(16)
+    })
   }
 }

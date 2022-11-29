@@ -46,8 +46,4 @@ export class SnowbrushRenderer {
   translate(x: number, y: number) {
     this._sheetViewController.translate(x, y)
   }
-
-  transform(x: number, y: number) {
-    this._sheetViewController.transform(x, y)
-  }
 }
