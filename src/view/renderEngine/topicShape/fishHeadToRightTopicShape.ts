@@ -6,7 +6,6 @@ import Size from '../../../utils/size'
 import { getUnits } from './topicShapeUtils'
 
 export default class FishHeadToRightTopicShape extends TopicShape {
-
   constructor() {
     super(TopicShapeType.FISH_HEAD_TO_RIGHT)
   }
@@ -14,8 +13,8 @@ export default class FishHeadToRightTopicShape extends TopicShape {
   protected calcTopicShapePath(bounds: Bounds) {
     return (
       `M ${bounds.x} ${bounds.y}` +
-      `Q ${bounds.x + bounds.width / 4 * 3} ${bounds.y} ${bounds.x + bounds.width} ${bounds.y + bounds.y + bounds.height}` +
-      `Q ${bounds.x + bounds.width / 4 * 3} ${bounds.y + bounds.height} ${bounds.x} ${bounds.y + bounds.height}` +
+      `Q ${bounds.x + (bounds.width / 4) * 3} ${bounds.y} ${bounds.x + bounds.width} ${bounds.y + bounds.y + bounds.height}` +
+      `Q ${bounds.x + (bounds.width / 4) * 3} ${bounds.y + bounds.height} ${bounds.x} ${bounds.y + bounds.height}` +
       `Z`
     )
   }
@@ -37,8 +36,7 @@ export default class FishHeadToRightTopicShape extends TopicShape {
       top: v + tbm + lw,
       left: l + lw,
       bottom: v + tbm + lw,
-      right: r + lw
+      right: r + lw,
     }
   }
-
 }

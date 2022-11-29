@@ -4,20 +4,20 @@ import * as brushes from '../renderEngine/topicShape/brushes'
 import Position from '../../utils/position'
 
 export type LinePositions = {
-  start: Position,
-  control: Position,
+  start: Position
+  control: Position
   end: Position
 }
 
 export type ConnectionInfo = {
-  d: string,
-  fill: string,
-  stroke: string,
-  strokeWidth: number,
+  d: string
+  fill: string
+  stroke: string
+  strokeWidth: number
 }
 
 function getConnectionFunc(connection: BranchConnection): (branch: BranchViewController, linePositions: LinePositions, special: boolean) => ConnectionInfo {
-  switch(connection) {
+  switch (connection) {
     case BranchConnection.CURVE: {
       return (branch, linePositions, special) => {
         const tapered = false
@@ -47,7 +47,7 @@ function getConnectionFunc(connection: BranchConnection): (branch: BranchViewCon
           d,
           fill: tapered ? lineColor : 'none',
           stroke: lineColor,
-          strokeWidth: tapered ? 0 : lineWidth
+          strokeWidth: tapered ? 0 : lineWidth,
         }
       }
     }
@@ -66,7 +66,7 @@ function getConnectionFunc(connection: BranchConnection): (branch: BranchViewCon
           d,
           fill: tapered ? lineColor : 'none',
           stroke: lineColor,
-          strokeWidth: tapered ? 0 : lineWidth
+          strokeWidth: tapered ? 0 : lineWidth,
         }
       }
     }
@@ -83,7 +83,7 @@ function getConnectionFunc(connection: BranchConnection): (branch: BranchViewCon
           d,
           fill: tapered ? lineColor : 'none',
           stroke: lineColor,
-          strokeWidth: tapered ? 0 : lineWidth
+          strokeWidth: tapered ? 0 : lineWidth,
         }
       }
     }
@@ -100,7 +100,7 @@ function getConnectionFunc(connection: BranchConnection): (branch: BranchViewCon
           d,
           fill: tapered ? lineColor : 'none',
           stroke: lineColor,
-          strokeWidth: tapered ? 0 : lineWidth
+          strokeWidth: tapered ? 0 : lineWidth,
         }
       }
     }
@@ -117,7 +117,7 @@ function getConnectionFunc(connection: BranchConnection): (branch: BranchViewCon
           d,
           fill: tapered ? lineColor : 'none',
           stroke: lineColor,
-          strokeWidth: tapered ? 0 : lineWidth
+          strokeWidth: tapered ? 0 : lineWidth,
         }
       }
     }
@@ -134,7 +134,7 @@ function getConnectionFunc(connection: BranchConnection): (branch: BranchViewCon
           d,
           fill: tapered ? lineColor : 'none',
           stroke: lineColor,
-          strokeWidth: tapered ? 0 : lineWidth
+          strokeWidth: tapered ? 0 : lineWidth,
         }
       }
     }
@@ -146,17 +146,17 @@ function getConnectionFunc(connection: BranchConnection): (branch: BranchViewCon
         const lineWidth = parent instanceof BranchViewController ? parent.topicViewController.lineWidth : 1
         const lineColor = branch.topicViewController.view.lineColor
         const d = `M ${start.x} ${start.y} L ${end.x} ${end.y}`
-        
+
         return {
           d,
           fill: tapered ? lineColor : 'none',
           stroke: lineColor,
-          strokeWidth: tapered ? 0 : lineWidth
+          strokeWidth: tapered ? 0 : lineWidth,
         }
       }
     }
 
-    default: 
+    default:
       return null
   }
 }

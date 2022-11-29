@@ -8,11 +8,10 @@ import Size from '../../../utils/size'
 import { getFontSize } from './topicShapeUtils'
 
 export default class EllpticRectangleTopicShape extends TopicShape {
-
   constructor() {
     super(TopicShapeType.ELLIPTIC_RECTANGLE)
   }
-  
+
   protected calcTopicShapePath(bounds: Bounds) {
     const { x, y, width, height } = bounds
     const x0 = x
@@ -62,8 +61,7 @@ export default class EllpticRectangleTopicShape extends TopicShape {
       top: Math.max(topicMargins.top, peak + borderWidth) + fontSize * verScale,
       left: topicMargins.left,
       bottom: Math.max(topicMargins.bottom, peak + borderWidth) + fontSize * verScale,
-      right: topicMargins.right
+      right: topicMargins.right,
     }
   }
-
 }

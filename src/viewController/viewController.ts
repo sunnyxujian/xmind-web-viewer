@@ -3,7 +3,6 @@ import View from '../view/view'
 import Model from '../model/model'
 
 export default abstract class ViewController {
-
   private readonly _parent: ViewController
 
   constructor(parent: ViewController) {
@@ -17,5 +16,4 @@ export default abstract class ViewController {
   get parent(): ViewController {
     return this._parent
   }
-
 }

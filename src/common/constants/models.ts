@@ -8,10 +8,7 @@ enum Direction {
   DOWN = 'down',
   LEFT = 'left',
   RIGHT = 'right',
-  NONE = 'none'
+  NONE = 'none',
 }
 
-export {
-  TopicType,
-  Direction,
-}
+export { TopicType, Direction }

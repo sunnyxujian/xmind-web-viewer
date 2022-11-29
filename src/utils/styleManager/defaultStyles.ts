@@ -23,7 +23,7 @@ const defaultStyles = {
     [StyleKey.MARGIN_LEFT]: '29pt',
     [StyleKey.MARGIN_RIGHT]: '29pt',
     [StyleKey.SPACING_MAJOR]: '50pt',
-    [StyleKey.SPACING_MINOR]: '35pt'
+    [StyleKey.SPACING_MINOR]: '35pt',
   },
 
   [ClassType.MAIN_TOPIC]: {
@@ -49,7 +49,7 @@ const defaultStyles = {
     [StyleKey.MARGIN_TOP]: '10pt',
     [StyleKey.MARGIN_BOTTOM]: '10pt',
     [StyleKey.SPACING_MAJOR]: '26pt',
-    [StyleKey.SPACING_MINOR]: '6pt'
+    [StyleKey.SPACING_MINOR]: '6pt',
   },
 
   [ClassType.SUB_TOPIC]: {
@@ -75,7 +75,7 @@ const defaultStyles = {
     [StyleKey.MARGIN_TOP]: '6pt',
     [StyleKey.MARGIN_BOTTOM]: '6pt',
     [StyleKey.SPACING_MAJOR]: '26pt',
-    [StyleKey.SPACING_MINOR]: '8pt'
+    [StyleKey.SPACING_MINOR]: '8pt',
   },
 
   // [CLASS_TYPE.CALLOUT_TOPIC]: {
@@ -214,8 +214,7 @@ const defaultStyles = {
 
   hasClass: function (className: string) {
     return !!defaultStyles[className]
-  }
-
+  },
 }
 
 export default defaultStyles

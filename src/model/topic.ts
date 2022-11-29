@@ -1,4 +1,4 @@
-import Model, { ModelData }  from './model'
+import Model, { ModelData } from './model'
 import { TopicType } from '../common/constants/models'
 import { ExtensionProvider, ExtensionContentName } from '../common/constants/extensions'
 import { StyleData } from './style'
@@ -6,19 +6,19 @@ import { StyleKey } from '../common/constants/styles'
 import Sheet from './sheet'
 
 export interface TopicData extends ModelData {
-  title: string,
-  structureClass?: string,
+  title: string
+  structureClass?: string
   children?: {
     [type: string]: Array<TopicData>
-  },
-  customWidth?: string,
-  style?: StyleData,
-  extensions?: Array<ExtensionData>,
+  }
+  customWidth?: string
+  style?: StyleData
+  extensions?: Array<ExtensionData>
 }
 
 export interface ExtensionData {
-  provider: string,
-  content: string | [object],
+  provider: string
+  content: string | [object]
 }
 
 export function parseTopic(data: TopicData, sheet: Sheet): Topic {
@@ -37,7 +37,6 @@ export function parseTopic(data: TopicData, sheet: Sheet): Topic {
 }
 
 export default class Topic extends Model {
-
   type: TopicType
 
   private readonly _data: TopicData
@@ -119,5 +118,4 @@ export default class Topic extends Model {
       }
     }
   }
-
 }

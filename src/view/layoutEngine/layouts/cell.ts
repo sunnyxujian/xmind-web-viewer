@@ -5,7 +5,6 @@ import GridData from '../../layoutEngine/layouts/gridData'
 import { isSameSize } from '../../../utils/bounds'
 
 class Cell {
-
   private _parent: Cell
   private _children: Cell[]
 
@@ -15,7 +14,6 @@ class Cell {
   private _position: Position
   private _size: Size
   private _prefSize: Size
-
 
   constructor() {
     this._children = []
@@ -94,7 +92,6 @@ class Cell {
     if (this._prefSize && isSameSize(this._prefSize, preferredSize)) return
     this._prefSize = preferredSize
   }
-
 }
 
 export default Cell

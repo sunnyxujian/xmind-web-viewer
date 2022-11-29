@@ -4,7 +4,6 @@ import { isSameSize } from '../utils/bounds'
 import { Element } from '@svgdotjs/svg.js'
 
 export default abstract class View {
-
   abstract readonly type: ViewType
 
   private _size: Size
@@ -12,7 +11,7 @@ export default abstract class View {
 
   private _prefSize: Size
 
-  constructor() { }
+  constructor() {}
 
   abstract get content(): Element
 
@@ -38,6 +37,5 @@ export default abstract class View {
     return this._prefSize
   }
 
-  appendChild(view: View) { } 
-
+  appendChild(view: View) {}
 }

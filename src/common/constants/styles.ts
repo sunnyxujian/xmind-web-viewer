@@ -22,7 +22,7 @@ enum TopicShapeType {
   FISHBONE_ROATED_SW = 'org.xmind.topicShape.fishbone.SW.rotated',
   FISHBONE_ROATED_SE = 'org.xmind.topicShape.fishbone.SE.rotated',
   FISHBONE_NE_UNDERLINE = 'fishbone_ne_underline',
-  FISHBONE_NW_UNDERLINE = 'fishbone_nw_underline'
+  FISHBONE_NW_UNDERLINE = 'fishbone_nw_underline',
 }
 
 enum ClassType {
@@ -84,14 +84,7 @@ enum TextTransform {
   MANUAL = 'manual',
   CAPITALIZE = 'capitalize',
   UPPER_CASE = 'uppercase',
-  LOWER_CASE = 'lowercase'
+  LOWER_CASE = 'lowercase',
 }
 
-export {
-  TopicShapeType,
-  ClassType,
-  StyleKey,
-  StyleLayer,
-  BranchConnection,
-  TextTransform,
-}
+export { TopicShapeType, ClassType, StyleKey, StyleLayer, BranchConnection, TextTransform }

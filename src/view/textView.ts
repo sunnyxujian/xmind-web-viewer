@@ -7,13 +7,12 @@ import Position, { isSamePosition } from '../utils/position'
 import TitleLayoutWorker from './layoutEngine/titleLayoutWorker'
 
 const ALIGN_MAP = {
-  'left': 'start',
-  'center': 'middle',
-  'right': 'end',
+  left: 'start',
+  center: 'middle',
+  right: 'end',
 }
 
 export default abstract class TextView extends View {
-
   private _text: string
 
   private _textFn: (tspan: Tspan) => void
@@ -93,15 +92,29 @@ export default abstract class TextView extends View {
       this._titleText.text(this.textFn)
       this.textFnDirty = false
     }
-    
-    if (textColor) { this._titleText.attr({ fill: textColor }) }
-    if (textDecoration) { this._titleText.attr({ 'text-decoration': textDecoration }) }
-    if (textAlign) { this._titleText.attr({ 'text-anchor': ALIGN_MAP[textAlign] }) }
-    if (fontSize) { this._titleText.attr({ 'font-size': fontSize }) }
-    if (fontFamily) { this._titleText.attr({ 'font-family': fontFamily }) }
-    if (fontWeight) { this._titleText.attr({ 'font-weight': fontWeight }) }
-    if (fontStyle) { this._titleText.attr({ 'font-style': fontStyle }) }
-    
+
+    if (textColor) {
+      this._titleText.attr({ fill: textColor })
+    }
+    if (textDecoration) {
+      this._titleText.attr({ 'text-decoration': textDecoration })
+    }
+    if (textAlign) {
+      this._titleText.attr({ 'text-anchor': ALIGN_MAP[textAlign] })
+    }
+    if (fontSize) {
+      this._titleText.attr({ 'font-size': fontSize })
+    }
+    if (fontFamily) {
+      this._titleText.attr({ 'font-family': fontFamily })
+    }
+    if (fontWeight) {
+      this._titleText.attr({ 'font-weight': fontWeight })
+    }
+    if (fontStyle) {
+      this._titleText.attr({ 'font-style': fontStyle })
+    }
+
     if (this.textPositionDirty) {
       this._titleText.translate(this.textPosition.x, this.textPosition.y)
       this.textPositionDirty = false
@@ -117,5 +130,4 @@ export default abstract class TextView extends View {
   get layoutWorker() {
     return new TitleLayoutWorker(this)
   }
-
 }

@@ -5,7 +5,6 @@ import Bounds from '../../../utils/bounds'
 import Size from '../../../utils/size'
 
 export default class EllipseRectTopicShape extends TopicShape {
-
   constructor() {
     super(TopicShapeType.ELLIPSE_RECT)
   }
@@ -16,18 +15,12 @@ export default class EllipseRectTopicShape extends TopicShape {
     const x1 = x + width - radius
     const y0 = y
     const y1 = y + height
-    
+
     const bezierWidth = radius / 0.75
     const outX0 = x0 - bezierWidth
     const outX1 = x1 + bezierWidth
 
-    return (
-      `M ${x0} ${y0}` +
-      `C ${outX0} ${y0} ${outX0} ${y1} ${x0} ${y1}` +
-      `L ${x1} ${y1}` +
-      `C ${outX1} ${y1} ${outX1} ${y0} ${x1} ${y0}` +
-      `L ${x0} ${y0}`
-    )
+    return `M ${x0} ${y0}` + `C ${outX0} ${y0} ${outX0} ${y1} ${x0} ${y1}` + `L ${x1} ${y1}` + `C ${outX1} ${y1} ${outX1} ${y0} ${x1} ${y0}` + `L ${x0} ${y0}`
   }
 
   getTopicMargins(branch: BranchViewController, size: Size) {
@@ -40,8 +33,7 @@ export default class EllipseRectTopicShape extends TopicShape {
       top,
       bottom,
       left: borderWidth + radius,
-      right: borderWidth + radius
+      right: borderWidth + radius,
     }
   }
-
 }

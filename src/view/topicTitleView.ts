@@ -2,7 +2,6 @@ import TextView from './textView'
 import ViewType from '../common/constants/views'
 
 export default class TopicTitleView extends TextView {
-
   type = ViewType.TOPIC_TITLE
 
   constructor() {
@@ -12,5 +11,4 @@ export default class TopicTitleView extends TextView {
   layout() {
     this.layoutWorker.work()
   }
-
 }

@@ -10,7 +10,7 @@ export function isSamePosition(position1: Position, position2: Position) {
 export function diffPosition(from: Position, to: Position) {
   return {
     x: to.x - from.x,
-    y: to.y - from.y
+    y: to.y - from.y,
   }
 }
 
@@ -19,14 +19,14 @@ export function normalizeVector(vector: Position, len = 1) {
   const ratio = d / len
   return {
     x: vector.x / ratio,
-    y: vector.y / ratio
+    y: vector.y / ratio,
   }
 }
 
 export function addPosition(p1: Position, p2: Position) {
   return {
     x: p1.x + p2.x,
-    y: p1.y + p2.y
+    y: p1.y + p2.y,
   }
 }
 

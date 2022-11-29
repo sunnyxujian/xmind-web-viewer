@@ -10,17 +10,16 @@ import { GridLayout } from './layouts/gridLayout'
 import Layout from './layouts/layout'
 
 interface TopicLayout {
-  topicTitleCell: TopicTitleCell,
-  topicTitleGroupCell: Cell,
-  innerGroupCell: Cell,
-  middleGroupCell: Cell,
-  topicShapeGroupCell: Cell,
-  topicShapePaddingGroupCell: Cell,
-  topicCell: Cell,
+  topicTitleCell: TopicTitleCell
+  topicTitleGroupCell: Cell
+  innerGroupCell: Cell
+  middleGroupCell: Cell
+  topicShapeGroupCell: Cell
+  topicShapePaddingGroupCell: Cell
+  topicCell: Cell
 }
 
 export default class TopicLayoutWorker {
-
   private readonly _view: TopicView
   private _topicLayout: TopicLayout
 
@@ -35,15 +34,8 @@ export default class TopicLayoutWorker {
       this._topicLayout = this._createTopicLayout(topicViewController)
     }
 
-    const {
-      topicTitleCell,
-      topicTitleGroupCell,
-      innerGroupCell,
-      middleGroupCell,
-      topicShapeGroupCell,
-      topicShapePaddingGroupCell,
-      topicCell
-    } = this._topicLayout
+    const { topicTitleCell, topicTitleGroupCell, innerGroupCell, middleGroupCell, topicShapeGroupCell, topicShapePaddingGroupCell, topicCell } =
+      this._topicLayout
 
     const topicShapeGroupSize = topicShapeGroupCell.getPreferredSize(-1, -1, true)
     topicShapeGroupCell.setSize(topicShapeGroupSize)
@@ -92,10 +84,7 @@ export default class TopicLayoutWorker {
       iterChildren(topicShapeGroupCell)
     }
 
-    topicShapePaddingGroupCell.setLayout(this._createTopicShapePaddingGridLayout(
-      topicViewController,
-      topicShapeGroupCell.getSize()
-    ))
+    topicShapePaddingGroupCell.setLayout(this._createTopicShapePaddingGridLayout(topicViewController, topicShapeGroupCell.getSize()))
 
     const topicShapePaddingGroupSize = topicShapePaddingGroupCell.getPreferredSize(-1, -1, true)
     topicShapePaddingGroupCell.setSize(topicShapePaddingGroupSize)
@@ -120,10 +109,7 @@ export default class TopicLayoutWorker {
     }
 
     if (titleViewController) {
-      titleViewController.move(
-        topicTitleGroupCell.getPosition().x,
-        topicTitleGroupCell.getPosition().y
-      )
+      titleViewController.move(topicTitleGroupCell.getPosition().x, topicTitleGroupCell.getPosition().y)
     }
 
     topicViewController.shapeBounds = {
@@ -184,12 +170,14 @@ export default class TopicLayoutWorker {
     layout.horizontalSpacing = 0
     cell.setLayout(layout)
 
-    cell.setLayoutData(new GridData({
-      horizontalAlignment: GridData.FILL,
-      verticalAlignment: GridData.CENTER,
-      grabExcessHorizontalSpace: true,
-      exclude: !titleViewController
-    }))
+    cell.setLayoutData(
+      new GridData({
+        horizontalAlignment: GridData.FILL,
+        verticalAlignment: GridData.CENTER,
+        grabExcessHorizontalSpace: true,
+        exclude: !titleViewController,
+      }),
+    )
     return cell
   }
 
@@ -200,11 +188,13 @@ export default class TopicLayoutWorker {
     layout.horizontalSpacing = 10
     cell.setLayout(layout)
 
-    cell.setLayoutData(new GridData({
-      horizontalAlignment: GridData.FILL,
-      verticalAlignment: GridData.CENTER,
-      grabExcessHorizontalSpace: true,
-    }))
+    cell.setLayoutData(
+      new GridData({
+        horizontalAlignment: GridData.FILL,
+        verticalAlignment: GridData.CENTER,
+        grabExcessHorizontalSpace: true,
+      }),
+    )
     return cell
   }
 
@@ -214,12 +204,14 @@ export default class TopicLayoutWorker {
     layout.horizontalSpacing = 10
     cell.setLayout(layout)
 
-    cell.setLayoutData(new GridData({
-      horizontalAlignment: GridData.FILL,
-      verticalAlignment: GridData.FILL,
-      grabExcessHorizontalSpace: true,
-      grabExcessVerticalSpace: true
-    }))
+    cell.setLayoutData(
+      new GridData({
+        horizontalAlignment: GridData.FILL,
+        verticalAlignment: GridData.FILL,
+        grabExcessHorizontalSpace: true,
+        grabExcessVerticalSpace: true,
+      }),
+    )
     return cell
   }
 
@@ -229,23 +221,27 @@ export default class TopicLayoutWorker {
     layout.verticalSpacing = 10
     cell.setLayout(layout)
 
-    cell.setLayoutData(new GridData({
-      horizontalAlignment: GridData.FILL,
-      verticalAlignment: GridData.FILL,
-      grabExcessHorizontalSpace: true,
-      grabExcessVerticalSpace: true
-    }))
+    cell.setLayoutData(
+      new GridData({
+        horizontalAlignment: GridData.FILL,
+        verticalAlignment: GridData.FILL,
+        grabExcessHorizontalSpace: true,
+        grabExcessVerticalSpace: true,
+      }),
+    )
     return cell
   }
 
   private _createTopicShapePaddingGroupCell(): Cell {
     const cell = new Cell()
-    cell.setLayoutData(new GridData({
-      horizontalAlignment: GridData.FILL,
-      verticalAlignment: GridData.FILL,
-      grabExcessHorizontalSpace: true,
-      grabExcessVerticalSpace: true
-    }))
+    cell.setLayoutData(
+      new GridData({
+        horizontalAlignment: GridData.FILL,
+        verticalAlignment: GridData.FILL,
+        grabExcessHorizontalSpace: true,
+        grabExcessVerticalSpace: true,
+      }),
+    )
     return cell
   }
 
@@ -253,7 +249,7 @@ export default class TopicLayoutWorker {
     const contentBounds = {
       x: -topicShapeGroupSize.width / 2,
       y: -topicShapeGroupSize.height / 2,
-      ...topicShapeGroupSize
+      ...topicShapeGroupSize,
     }
 
     const padding = topicViewController.topicShape.getTopicMargins(<BranchViewController>topicViewController.parent, contentBounds)
@@ -273,11 +269,9 @@ export default class TopicLayoutWorker {
     cell.setLayout(layout)
     return cell
   }
-
 }
 
 class TopicTitleCell extends Cell {
-
   useDefaultMinTopicTitleWidth = true
 
   private _titleViewController: TopicTitleViewController
@@ -285,12 +279,14 @@ class TopicTitleCell extends Cell {
   constructor(titleViewController: TopicTitleViewController) {
     super()
     this._titleViewController = titleViewController
-    this.setLayoutData(new GridData({
-      horizontalAlignment: GridData.FILL,
-      verticalAlignment: GridData.CENTER,
-      grabExcessHorizontalSpace: true,
-      exclude: !this._titleViewController
-    }))
+    this.setLayoutData(
+      new GridData({
+        horizontalAlignment: GridData.FILL,
+        verticalAlignment: GridData.CENTER,
+        grabExcessHorizontalSpace: true,
+        exclude: !this._titleViewController,
+      }),
+    )
   }
 
   protectedCalcSize(wHint: number, hHint: number): Size {
@@ -311,5 +307,4 @@ class TopicTitleCell extends Cell {
 
     return size
   }
-
 }

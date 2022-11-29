@@ -12,20 +12,19 @@ export const MASK_OUTERD = `
 `
 
 export interface MaskInfo {
-  d: string,
+  d: string
   transform: string
 }
 
 export interface ConnectionViewData {
-  d: string,
-  fill: string,
-  stroke: string,
-  strokeWidth: number,
+  d: string
+  fill: string
+  stroke: string
+  strokeWidth: number
   maskInfo?: MaskInfo
 }
 
 export default class ConnectionView extends View {
-
   type = ViewType.CONNECTION
 
   private readonly _svg: Path
@@ -48,11 +47,11 @@ export default class ConnectionView extends View {
     if (maskInfo) {
       const masking = parent.canvas.clip()
       if (masking) {
-        const clipRegion = SVG().path().attr({ 
+        const clipRegion = SVG().path().attr({
           d: maskInfo.d,
-          fill: 'black', 
+          fill: 'black',
           transform: maskInfo.transform,
-          'clip-rule': 'evenodd' 
+          'clip-rule': 'evenodd',
         })
 
         masking.add(clipRegion)
@@ -66,5 +65,4 @@ export default class ConnectionView extends View {
   get content() {
     return this._svg
   }
-
 }

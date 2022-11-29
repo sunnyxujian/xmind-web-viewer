@@ -9,8 +9,7 @@ interface Bounds {
 }
 
 export function isSameSize(size1: Size, size2: Size) {
-  return stripNum(size1.width) === stripNum(size2.width) &&
-    stripNum(size1.height) === stripNum(size2.height)
+  return stripNum(size1.width) === stripNum(size2.width) && stripNum(size1.height) === stripNum(size2.height)
 }
 
 function stripNum(num: number, precision = 12): number {
@@ -18,7 +17,9 @@ function stripNum(num: number, precision = 12): number {
 }
 
 export function mergeArray(array: Bounds[]) {
-  return array.reduce((pre, cur) => { return merge(pre, cur) })
+  return array.reduce((pre, cur) => {
+    return merge(pre, cur)
+  })
 }
 
 export function merge(b1: Bounds, b2: Bounds): Bounds {
@@ -34,7 +35,7 @@ export function move(b: Bounds, pos: Position) {
     x: pos.x + b.x,
     y: pos.y + b.y,
     width: b.width,
-    height: b.height
+    height: b.height,
   }
 }
 

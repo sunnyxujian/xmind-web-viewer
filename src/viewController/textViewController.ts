@@ -3,7 +3,6 @@ import TextView from '../view/textView'
 import FontInfo from '../utils/fontInfo'
 
 export default abstract class TextViewController extends ViewController {
-
   render() {
     this.view.render(this.parent.view)
   }
@@ -18,8 +17,12 @@ export default abstract class TextViewController extends ViewController {
   }
 
   move(newX: number, newY: number) {
-    if (this.view.fontInfo.textAlign === 'center') { newX += this.view.textSize.width / 2 }
-    if (this.view.fontInfo.textAlign === 'right') { newX += this.view.textSize.width }
+    if (this.view.fontInfo.textAlign === 'center') {
+      newX += this.view.textSize.width / 2
+    }
+    if (this.view.fontInfo.textAlign === 'right') {
+      newX += this.view.textSize.width
+    }
 
     this.view.textPosition = { x: newX, y: newY }
   }
@@ -35,5 +38,4 @@ export default abstract class TextViewController extends ViewController {
   }
 
   abstract get view(): TextView
-
 }

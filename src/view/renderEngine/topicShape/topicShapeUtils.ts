@@ -13,9 +13,7 @@ enum LineFocusType {
 }
 
 const offsetPointCalcFnMap = {
-
   calcMapStructureStartPoint(parent: BranchViewController, child: BranchViewController): Position {
-
     const f = (() => {
       // critical value
       const y0 = 100
@@ -23,13 +21,13 @@ const offsetPointCalcFnMap = {
       const y1 = 600
       // key point
       const k = 0.1
-    
+
       /**
        * @param {Number} y - y-position
        * @param {Number} p1 - f(y0) === p1
        * @param {Number} p2 - approximation
        * */
-      return function (y:number, p1:number, p2:number) {
+      return function (y: number, p1: number, p2: number) {
         p1 = Math.abs(p1)
         const symb = p2 / Math.abs(p2)
         y = Math.abs(y)
@@ -80,8 +78,7 @@ const offsetPointCalcFnMap = {
     }
 
     return { x: 0, y: offset }
-  }
-
+  },
 }
 
 export { LineFocusType, offsetPointCalcFnMap }
@@ -89,7 +86,7 @@ export { LineFocusType, offsetPointCalcFnMap }
 export const END_OFFSET = -1
 
 export function getStartDirection(startBranch: BranchViewController, endBranch: BranchViewController) {
-  switch(startBranch.structureClass) {
+  switch (startBranch.structureClass) {
     case StructureClass.LOGIC_RIGHT:
       return Direction.RIGHT
 
@@ -114,12 +111,12 @@ export function getStartDirection(startBranch: BranchViewController, endBranch: 
 }
 
 export function getEndDirection(startBranch: BranchViewController, endBranch: BranchViewController): Direction {
-  switch(startBranch?.structureClass) {
+  switch (startBranch?.structureClass) {
     case StructureClass.TREE_RIGHT:
     case StructureClass.LOGIC_RIGHT:
       return Direction.LEFT
 
-    case StructureClass.TREE_LEFT:  
+    case StructureClass.TREE_LEFT:
     case StructureClass.LOGIC_LEFT:
       return Direction.RIGHT
 
@@ -138,8 +135,12 @@ export function getLineFocusType(branch: BranchViewController) {
   if (isMapStructure(branch)) {
     const shapeType = branch.topicShape.type
     const lineShape = branch.connectionViewController.lineShape
-    if (isDivergentLine(shapeType, lineShape)) { return LineFocusType.DIVER_LINE }
-    if (isOrderLine(shapeType, lineShape)) { return LineFocusType.ORDER_LINE }
+    if (isDivergentLine(shapeType, lineShape)) {
+      return LineFocusType.DIVER_LINE
+    }
+    if (isOrderLine(shapeType, lineShape)) {
+      return LineFocusType.ORDER_LINE
+    }
     return LineFocusType.DIVER_LINE
   }
   return LineFocusType.FOCUS_LINE
@@ -177,7 +178,7 @@ export function getJointPosition(bounds: Bounds, dire: Direction): Position {
     }
 
     case Direction.DOWN: {
-      return { x: 0, y: y + height}
+      return { x: 0, y: y + height }
     }
   }
 }
@@ -188,7 +189,7 @@ export function calcUnderline(branch: BranchViewController) {
   const bounds = topic.shapeBounds
   return {
     x: 0,
-    y: bounds.y + bounds.height - borderLineWidth / 2
+    y: bounds.y + bounds.height - borderLineWidth / 2,
   }
 }
 
@@ -197,16 +198,24 @@ export function relativePosToRealPos(relative: Position, branch: BranchViewContr
 
   return {
     x: relative.x + branchRealPos.x,
-    y: relative.y + branchRealPos.y
+    y: relative.y + branchRealPos.y,
   }
 }
 
 export function addPositionByDirection(pos: Position, dire: Direction, dx: number, dy = dx) {
   const newPos = Object.assign({}, pos)
-  if (dire === Direction.LEFT) { newPos.x -= dx }
-  if (dire === Direction.RIGHT) { newPos.x += dx }
-  if (dire === Direction.UP) { newPos.y -= dy }
-  if (dire === Direction.DOWN) { newPos.y += dy }
+  if (dire === Direction.LEFT) {
+    newPos.x -= dx
+  }
+  if (dire === Direction.RIGHT) {
+    newPos.x += dx
+  }
+  if (dire === Direction.UP) {
+    newPos.y -= dy
+  }
+  if (dire === Direction.DOWN) {
+    newPos.y += dy
+  }
 
   return newPos
 }
@@ -222,6 +231,6 @@ export function getUnits(branch: BranchViewController) {
     rm: branch.topicViewController.view.marginRight || 0,
     tm: branch.topicViewController.view.marginTop || 0,
     bm: branch.topicViewController.view.marginBottom || 0,
-    lw: branch.topicViewController.view.borderWidth || 0
+    lw: branch.topicViewController.view.borderWidth || 0,
   }
 }

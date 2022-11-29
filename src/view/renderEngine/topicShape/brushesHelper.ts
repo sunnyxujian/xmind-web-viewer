@@ -5,8 +5,5 @@ export function flexCorner(start: Position, flex: Position, end: Position, corne
   let v2 = diffPosition(flex, end)
   v1 = normalizeVector(v1, corner)
   v2 = normalizeVector(v2, corner)
-  return [
-    addPosition(flex, v1),
-    addPosition(flex, v2)
-  ]
+  return [addPosition(flex, v1), addPosition(flex, v2)]
 }

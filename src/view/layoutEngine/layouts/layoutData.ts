@@ -1,7 +1,6 @@
 import Cell from '../../layoutEngine/layouts/cell'
 
 export default abstract class LayoutData {
-
   widthHint: number = -1
   heightHint: number = -1
 
@@ -50,5 +49,4 @@ export default abstract class LayoutData {
     this.defaultWidth = this.defaultHeight = -1
     this.currentWidth = this.currentHeight = -1
   }
-
 }

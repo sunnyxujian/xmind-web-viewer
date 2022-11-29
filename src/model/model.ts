@@ -6,15 +6,12 @@ export interface ModelData {
 }
 
 export default abstract class Model {
-
   ownerSheet: Sheet
   parent: Model
 
-  constructor() {
-  }
+  constructor() {}
 
   getStyleValue(key: StyleKey): string {
     return null
   }
-
 }

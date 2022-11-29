@@ -8,7 +8,6 @@ import Size from '../../../utils/size'
 import { getFontSize } from './topicShapeUtils'
 
 export default class RoundedHexagonTopicShape extends TopicShape {
-
   constructor() {
     super(TopicShapeType.ROUNDED_HEXAGON)
   }
@@ -61,15 +60,15 @@ export default class RoundedHexagonTopicShape extends TopicShape {
     peak = Math.round(peak)
 
     const topicMargins = super.getTopicMargins(branch, size)
-    
+
     const borderWidth = branch.topicBorderWidth
     const fontSize = getFontSize(branch)
-    
+
     return {
       top: Math.max(topicMargins.top, peak + borderWidth) + fontSize * verScale,
       left: topicMargins.left,
       bottom: Math.max(topicMargins.bottom, peak + borderWidth) + fontSize * verScale,
-      right: topicMargins.right
+      right: topicMargins.right,
     }
   }
 }

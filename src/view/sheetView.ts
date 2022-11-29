@@ -1,12 +1,11 @@
 import View from './view'
 import ViewType from '../common/constants/views'
-const { SVG, registerWindow } =  require('@svgdotjs/svg.js')
+const { SVG, registerWindow } = require('@svgdotjs/svg.js')
 import { G, Svg } from '@svgdotjs/svg.js'
 const { createSVGWindow } = require('svgdom')
 import Bounds from '../utils/bounds'
 
 export default class SheetView extends View {
-
   type = ViewType.SHEET
 
   readonly canvas: Svg
@@ -18,7 +17,7 @@ export default class SheetView extends View {
   constructor() {
     super()
 
-    if (typeof((<any>global).window) === 'undefined') {
+    if (typeof (<any>global).window === 'undefined') {
       const window = createSVGWindow()
       const document = window.document
       registerWindow(window, document)
@@ -31,7 +30,7 @@ export default class SheetView extends View {
     this._branchContainer = this._content.group().data('name', 'branch-container')
   }
 
-  render(options: { bgColor: string, bounds: Bounds }) {
+  render(options: { bgColor: string; bounds: Bounds }) {
     if (!options) return
 
     const { bgColor, bounds } = options
@@ -61,5 +60,4 @@ export default class SheetView extends View {
   get content(): G {
     return this._content
   }
-
 }

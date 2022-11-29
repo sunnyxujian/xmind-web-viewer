@@ -1,49 +1,53 @@
-import { SheetData } from "./model/sheet";
-import SheetViewController from "./viewController/sheetViewController";
-import { Svg } from "@svgdotjs/svg.js";
-import { Workbook } from "./model/workbook";
+import { SheetData } from './model/sheet'
+import SheetViewController from './viewController/sheetViewController'
+import { Svg } from '@svgdotjs/svg.js'
+import { Workbook } from './model/workbook'
 
 export interface RenderOptions {
-  sheetIndex?: number;
+  sheetIndex?: number
 }
 
 export class SnowbrushRenderer {
-  private _data: SheetData[];
-  private _sheetViewController: SheetViewController;
+  private _data: SheetData[]
+  private _sheetViewController: SheetViewController
 
   constructor(data: SheetData[]) {
     if (!data) {
-      throw new Error("Sheet data is required.");
+      throw new Error('Sheet data is required.')
     }
 
     if (data.length === 0) {
-      throw new Error("The sheet data should not be empty.");
+      throw new Error('The sheet data should not be empty.')
     }
 
-    this._data = data;
+    this._data = data
   }
 
   render(options: RenderOptions = { sheetIndex: 0 }) {
-    const { sheetIndex } = options;
+    const { sheetIndex } = options
 
-    const workbook = new Workbook(this._data);
-    const sheet = workbook.getSheetByIndex(sheetIndex);
+    const workbook = new Workbook(this._data)
+    const sheet = workbook.getSheetByIndex(sheetIndex)
 
-    this._sheetViewController = new SheetViewController(sheet);
-    this._sheetViewController.init();
+    this._sheetViewController = new SheetViewController(sheet)
+    this._sheetViewController.init()
 
-    return this._sheetViewController.getCanvas();
+    return this._sheetViewController.getCanvas()
   }
 
   get svg(): Svg {
-    return this._sheetViewController?.getCanvas();
+    return this._sheetViewController?.getCanvas()
   }
 
   get bounds() {
-    return this._sheetViewController?.centralBranchViewController.bounds;
+    return this._sheetViewController?.centralBranchViewController.bounds
   }
 
   translate(x: number, y: number) {
-    this._sheetViewController.translate(x, y);
+    this._sheetViewController.translate(x, y)
+  }
+
+  transform(x: number, y: number) {
+    this._sheetViewController.transform(x, y)
   }
 }

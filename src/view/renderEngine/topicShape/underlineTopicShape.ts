@@ -6,14 +6,12 @@ import { TopicShapeType } from '../../../common/constants/styles'
 import Size from '../../../utils/size'
 
 export default class UnderlineTopicShape extends TopicShape {
-
   constructor() {
     super(TopicShapeType.UNDERLINE)
   }
 
   protected calcTopicShapePath(bounds: Bounds) {
-    return 'M ' + ' ' + bounds.x + ' ' + (bounds.y + bounds.height) +
-      'L ' + (bounds.x + bounds.width) + ' ' + (bounds.y + bounds.height) + 'z'
+    return 'M ' + ' ' + bounds.x + ' ' + (bounds.y + bounds.height) + 'L ' + (bounds.x + bounds.width) + ' ' + (bounds.y + bounds.height) + 'z'
   }
 
   getTopicMargins(branch: BranchViewController, size: Size) {
@@ -24,7 +22,7 @@ export default class UnderlineTopicShape extends TopicShape {
       top: topicMargins.top,
       left: topicMargins.left,
       bottom: topicMargins.bottom - borderWidth,
-      right: topicMargins.right
+      right: topicMargins.right,
     }
   }
 
@@ -47,5 +45,4 @@ export default class UnderlineTopicShape extends TopicShape {
         return [calcUnderline]
     }
   }
-
 }

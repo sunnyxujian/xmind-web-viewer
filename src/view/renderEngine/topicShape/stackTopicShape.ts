@@ -7,7 +7,6 @@ import { getUnits } from './topicShapeUtils'
 import { TOPIC_SHAPE_STACK_GAP } from '../../../common/constants/layoutSettings'
 
 export default class StackTopicShape extends TopicShape {
-  
   constructor() {
     super(TopicShapeType.STACK)
   }
@@ -36,8 +35,7 @@ export default class StackTopicShape extends TopicShape {
       top: tm,
       left: lm,
       bottom: bm + lw + gap,
-      right: rm + gap
+      right: rm + gap,
     }
   }
-
 }

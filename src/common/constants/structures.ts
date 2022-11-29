@@ -53,5 +53,5 @@ export const FISHBONE_NORMAL_STRUCTURES = [
   StructureClass.FISHBONE_NE_NORMAL,
   StructureClass.FISHBONE_SE_NORMAL,
   StructureClass.FISHBONE_NW_NORMAL,
-  StructureClass.FISHBONE_SW_NORMAL
+  StructureClass.FISHBONE_SW_NORMAL,
 ]

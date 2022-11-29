@@ -3,13 +3,22 @@ import Bounds from '../../../utils/bounds'
 import Area from '../../../utils/area'
 import Size from '../../../utils/size'
 import BranchViewController from '../../../viewController/branchViewController'
-import { LineFocusType, offsetPointCalcFnMap, getStartDirection, getEndDirection, relativePosToRealPos, addPositionByDirection, getLineFocusType, getJointPosition, calcUnderline } from './topicShapeUtils'
+import {
+  LineFocusType,
+  offsetPointCalcFnMap,
+  getStartDirection,
+  getEndDirection,
+  relativePosToRealPos,
+  addPositionByDirection,
+  getLineFocusType,
+  getJointPosition,
+  calcUnderline,
+} from './topicShapeUtils'
 import { LINE_CONTROL_OFFSET } from '../../../common/constants/layoutSettings'
 import { TopicShapeType, BranchConnection } from '../../../common/constants/styles'
 import { Direction } from '../../../common/constants/models'
 
 export default abstract class TopicShape {
-
   private _type: TopicShapeType
 
   constructor(type: TopicShapeType) {
@@ -41,7 +50,7 @@ export default abstract class TopicShape {
       top: topicView.marginTop + borderWidth,
       left: topicView.marginLeft + borderWidth,
       bottom: topicView.marginBottom + borderWidth,
-      right: topicView.marginRight + borderWidth
+      right: topicView.marginRight + borderWidth,
     }
   }
 
@@ -51,7 +60,7 @@ export default abstract class TopicShape {
       x: topicBounds.x + halfBorderWidth,
       y: topicBounds.y + halfBorderWidth,
       width: topicBounds.width - halfBorderWidth,
-      height: topicBounds.height - halfBorderWidth
+      height: topicBounds.height - halfBorderWidth,
     }
   }
 
@@ -69,7 +78,7 @@ export default abstract class TopicShape {
     return deltaPointList.reduce((p1, p2) => {
       return {
         x: p1.x + p2.x,
-        y: p1.y + p2.y
+        y: p1.y + p2.y,
       }
     }, baseRealPos)
   }
@@ -90,18 +99,17 @@ export default abstract class TopicShape {
     const jointPosition = getJointPosition(endBranch.topicViewController.shapeBounds, dir)
     const pos = relativePosToRealPos(jointPosition, endBranch)
 
-    if (this.type === TopicShapeType.UNDERLINE || 
-        this.type === TopicShapeType.DOUBLE_UNDERLINE) {
-      if (dir !== Direction.UP && dir !== Direction.DOWN) { 
+    if (this.type === TopicShapeType.UNDERLINE || this.type === TopicShapeType.DOUBLE_UNDERLINE) {
+      if (dir !== Direction.UP && dir !== Direction.DOWN) {
         const deltaPos = calcUnderline(endBranch)
         return {
           x: pos.x + deltaPos.x,
-          y: pos.y + deltaPos.y
+          y: pos.y + deltaPos.y,
         }
       }
     }
 
-     return pos
+    return pos
   }
 
   getControlPosition(startBranch: BranchViewController, endBranch: BranchViewController) {
@@ -121,5 +129,4 @@ export default abstract class TopicShape {
   get type() {
     return this._type
   }
-
 }

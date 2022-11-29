@@ -10,7 +10,6 @@ import BranchViewController from './branchViewController'
 import TopicLayoutWorker from '../view/layoutEngine/topicLayoutWorker'
 
 export default class TopicViewController extends ViewController {
-
   readonly titleViewController: TopicTitleViewController
   shapeBounds: Bounds
   bounds: Bounds
@@ -84,5 +83,4 @@ export default class TopicViewController extends ViewController {
   get type() {
     return ViewControllerType.TOPIC
   }
-
 }

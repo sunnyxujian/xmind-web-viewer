@@ -9,7 +9,6 @@ function isNumber(number) {
 }
 
 export class GridLayout extends Layout {
-
   numColumns: number
 
   makeColumnsEqualWidth: boolean
@@ -54,7 +53,7 @@ export class GridLayout extends Layout {
     if (this.numColumns < 1) {
       return {
         width: this.marginLeft + this.marginWidth * 2 + this.marginRight,
-        height: this.marginTop + this.marginHeight * 2 + this.marginBottom
+        height: this.marginTop + this.marginHeight * 2 + this.marginBottom,
       }
     }
 
@@ -70,14 +69,14 @@ export class GridLayout extends Layout {
     if (count === 0) {
       return {
         width: this.marginLeft + this.marginWidth * 2 + this.marginRight,
-        height: this.marginTop + this.marginHeight * 2 + this.marginBottom
+        height: this.marginTop + this.marginHeight * 2 + this.marginBottom,
       }
     }
 
     for (let i = 0; i < count; i++) {
       const child = children[i]
       let data = child.getLayoutData()
-      if (!data) child.setLayoutData(data = new GridData({}))
+      if (!data) child.setLayoutData((data = new GridData({})))
       if (flushCache) data.flushCache()
       data.computeSize(child, data.widthHint, data.heightHint, flushCache)
       if (data.grabExcessHorizontalSpace && data.minimumWidth > 0) {
@@ -93,7 +92,10 @@ export class GridLayout extends Layout {
     }
 
     /* Build the grid */
-    let row = 0, column = 0, rowCount = 0, columnCount = Math.min(count, this.numColumns)
+    let row = 0,
+      column = 0,
+      rowCount = 0,
+      columnCount = Math.min(count, this.numColumns)
     let grid = []
     for (let i = 0; i < count; i++) {
       const child = children[i]
@@ -173,7 +175,9 @@ export class GridLayout extends Layout {
         if (data) {
           let hSpan = Math.max(1, Math.min(data.horizontalSpan, columnCount))
           if (hSpan > 1) {
-            let spanWidth = 0, spanMinWidth = 0, spanExpandCount = 0
+            let spanWidth = 0,
+              spanMinWidth = 0,
+              spanExpandCount = 0
             for (let k = 0; k < hSpan; k++) {
               spanWidth += widths[j - k]
               spanMinWidth += minWidths[j - k]
@@ -187,9 +191,10 @@ export class GridLayout extends Layout {
             if (w > 0) {
               if (this.makeColumnsEqualWidth) {
                 let equalWidth = (w + spanWidth) / hSpan
-                let remainder = (w + spanWidth) % hSpan, last = -1
+                let remainder = (w + spanWidth) % hSpan,
+                  last = -1
                 for (let k = 0; k < hSpan; k++) {
-                  widths[last = j - k] = Math.max(equalWidth, widths[j - k])
+                  widths[(last = j - k)] = Math.max(equalWidth, widths[j - k])
                 }
                 if (last > -1) widths[last] += remainder
               } else {
@@ -197,10 +202,11 @@ export class GridLayout extends Layout {
                   widths[j] += w
                 } else {
                   let delta = w / spanExpandCount
-                  let remainder = w % spanExpandCount, last = -1
+                  let remainder = w % spanExpandCount,
+                    last = -1
                   for (let k = 0; k < hSpan; k++) {
                     if (expandColumn[j - k]) {
-                      widths[last = j - k] += delta
+                      widths[(last = j - k)] += delta
                     }
                   }
                   if (last > -1) widths[last] += remainder
@@ -215,10 +221,11 @@ export class GridLayout extends Layout {
                   minWidths[j] += w
                 } else {
                   let delta = w / spanExpandCount
-                  let remainder = w % spanExpandCount, last = -1
+                  let remainder = w % spanExpandCount,
+                    last = -1
                   for (let k = 0; k < hSpan; k++) {
                     if (expandColumn[j - k]) {
-                      minWidths[last = j - k] += delta
+                      minWidths[(last = j - k)] += delta
                     }
                   }
                   if (last > -1) minWidths[last] += remainder
@@ -255,7 +262,7 @@ export class GridLayout extends Layout {
           for (let j = 0; j < columnCount; j++) {
             if (expandColumn[j]) {
               if (widths[j] + delta > minWidths[j]) {
-                widths[last = j] = widths[j] + delta
+                widths[(last = j)] = widths[j] + delta
               } else {
                 widths[j] = minWidths[j]
                 expandColumn[j] = false
@@ -272,7 +279,8 @@ export class GridLayout extends Layout {
                 let hSpan = Math.max(1, Math.min(data.horizontalSpan, columnCount))
                 if (hSpan > 1) {
                   if (!data.grabExcessHorizontalSpace || data.minimumWidth !== 0) {
-                    let spanWidth = 0, spanExpandCount = 0
+                    let spanWidth = 0,
+                      spanExpandCount = 0
                     for (let k = 0; k < hSpan; k++) {
                       spanWidth += widths[j - k]
                       if (expandColumn[j - k]) spanExpandCount++
@@ -284,10 +292,11 @@ export class GridLayout extends Layout {
                         widths[j] += w
                       } else {
                         let delta2 = w / spanExpandCount
-                        let remainder2 = w % spanExpandCount, last2 = -1
+                        let remainder2 = w % spanExpandCount,
+                          last2 = -1
                         for (let k = 0; k < hSpan; k++) {
                           if (expandColumn[j - k]) {
-                            widths[last2 = j - k] += delta2
+                            widths[(last2 = j - k)] += delta2
                           }
                         }
                         if (last2 > -1) widths[last2] += remainder2
@@ -327,7 +336,7 @@ export class GridLayout extends Layout {
                 currentWidth += widths[j - k]
               }
               currentWidth += (hSpan - 1) * this.horizontalSpacing - data.horizontalIndent
-              if ((currentWidth !== data.cacheWidth && data.horizontalAlignment === -1) || (data.cacheWidth > currentWidth)) {
+              if ((currentWidth !== data.cacheWidth && data.horizontalAlignment === -1) || data.cacheWidth > currentWidth) {
                 let trim = 0
                 data.cacheWidth = data.cacheHeight = -1
                 data.computeSize(child, Math.max(0, currentWidth - trim), data.heightHint, false)
@@ -379,7 +388,9 @@ export class GridLayout extends Layout {
         if (data) {
           let vSpan = Math.max(1, Math.min(data.verticalSpan, rowCount))
           if (vSpan > 1) {
-            let spanHeight = 0, spanMinHeight = 0, spanExpandCount = 0
+            let spanHeight = 0,
+              spanMinHeight = 0,
+              spanExpandCount = 0
             for (let k = 0; k < vSpan; k++) {
               spanHeight += heights[i - k]
               spanMinHeight += minHeights[i - k]
@@ -395,10 +406,11 @@ export class GridLayout extends Layout {
                 heights[i] += h
               } else {
                 let delta = h / spanExpandCount
-                let remainder = h % spanExpandCount, last = -1
+                let remainder = h % spanExpandCount,
+                  last = -1
                 for (let k = 0; k < vSpan; k++) {
                   if (expandRow[i - k]) {
-                    heights[last = i - k] += delta
+                    heights[(last = i - k)] += delta
                   }
                 }
                 if (last > -1) heights[last] += remainder
@@ -412,10 +424,11 @@ export class GridLayout extends Layout {
                   minHeights[i] += h
                 } else {
                   let delta = h / spanExpandCount
-                  let remainder = h % spanExpandCount, last = -1
+                  let remainder = h % spanExpandCount,
+                    last = -1
                   for (let k = 0; k < vSpan; k++) {
                     if (expandRow[i - k]) {
-                      minHeights[last = i - k] += delta
+                      minHeights[(last = i - k)] += delta
                     }
                   }
                   if (last > -1) minHeights[last] += remainder
@@ -439,7 +452,7 @@ export class GridLayout extends Layout {
         for (let i = 0; i < rowCount; i++) {
           if (expandRow[i]) {
             if (heights[i] + delta > minHeights[i]) {
-              heights[last = i] = heights[i] + delta
+              heights[(last = i)] = heights[i] + delta
             } else {
               heights[i] = minHeights[i]
               expandRow[i] = false
@@ -456,7 +469,8 @@ export class GridLayout extends Layout {
               let vSpan = Math.max(1, Math.min(data.verticalSpan, rowCount))
               if (vSpan > 1) {
                 if (!data.grabExcessVerticalSpace || data.minimumHeight !== 0) {
-                  let spanHeight = 0, spanExpandCount = 0
+                  let spanHeight = 0,
+                    spanExpandCount = 0
                   for (let k = 0; k < vSpan; k++) {
                     spanHeight += heights[i - k]
                     if (expandRow[i - k]) spanExpandCount++
@@ -468,10 +482,11 @@ export class GridLayout extends Layout {
                       heights[i] += h
                     } else {
                       let delta2 = h / spanExpandCount
-                      let remainder2 = h % spanExpandCount, last2 = -1
+                      let remainder2 = h % spanExpandCount,
+                        last2 = -1
                       for (let k = 0; k < vSpan; k++) {
                         if (expandRow[i - k]) {
-                          heights[last2 = i - k] += delta2
+                          heights[(last2 = i - k)] += delta2
                         }
                       }
                       if (last2 > -1) heights[last2] += remainder2
@@ -503,7 +518,8 @@ export class GridLayout extends Layout {
           if (data) {
             let hSpan = Math.max(1, Math.min(data.horizontalSpan, columnCount))
             let vSpan = Math.max(1, data.verticalSpan)
-            let cellWidth = 0, cellHeight = 0
+            let cellWidth = 0,
+              cellHeight = 0
             for (let k = 0; k < hSpan; k++) {
               cellWidth += widths[j + k]
             }
@@ -568,8 +584,7 @@ export class GridLayout extends Layout {
     totalDefaultHeight += this.verticalSpacing * (rowCount - 1) + this.marginTop + this.marginHeight * 2 + this.marginBottom
     return {
       width: totalDefaultWidth,
-      height: totalDefaultHeight
+      height: totalDefaultHeight,
     }
   }
-
 }

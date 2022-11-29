@@ -8,17 +8,16 @@ import Position from '../../../utils/position'
 import { Direction } from '../../../common/constants/models'
 
 export default class DiamondTopicShape extends TopicShape {
-
   constructor() {
     super(TopicShapeType.DIAMOND)
   }
 
   protected calcTopicShapePath(bounds: Bounds) {
     return (
-    `M ${bounds.x + bounds.x + bounds.width} ${bounds.y}` +
-    `L ${bounds.x + bounds.width} ${bounds.y + bounds.y + bounds.height}` +
-    `L ${bounds.x + bounds.x + bounds.width} ${bounds.y + bounds.height}` +
-    `L ${bounds.x} ${bounds.y + bounds.y + bounds.height}z`
+      `M ${bounds.x + bounds.x + bounds.width} ${bounds.y}` +
+      `L ${bounds.x + bounds.width} ${bounds.y + bounds.y + bounds.height}` +
+      `L ${bounds.x + bounds.x + bounds.width} ${bounds.y + bounds.height}` +
+      `L ${bounds.x} ${bounds.y + bounds.y + bounds.height}z`
     )
   }
 
@@ -37,7 +36,7 @@ export default class DiamondTopicShape extends TopicShape {
       top: m + bw + fontSize * verScale,
       left: m + bw + fontSize * horScale,
       bottom: m + bw + fontSize * verScale,
-      right: m + bw + fontSize * horScale
+      right: m + bw + fontSize * horScale,
     }
   }
 
@@ -86,4 +85,4 @@ export default class DiamondTopicShape extends TopicShape {
 
     return fixedPos
   }
-} 
+}

@@ -1,7 +1,6 @@
 import Sheet, { SheetData } from './sheet'
 
 export class Workbook {
-
   private readonly _dataArr: SheetData[]
   private _sheets: Array<Sheet> = []
 
@@ -21,5 +20,4 @@ export class Workbook {
     }
     return this._sheets[index]
   }
-
 }

@@ -1,7 +1,6 @@
 import LayoutData from '../../layoutEngine/layouts/layoutData'
 
 export default class GridData extends LayoutData {
-
   static BEGINNING = 1
   static CENTER = 2
   static END = 3
@@ -56,7 +55,7 @@ export default class GridData extends LayoutData {
     widthHint = -1,
     heightHint = -1,
     minimumWidth = 0,
-    minimumHeight = 0
+    minimumHeight = 0,
   }) {
     super()
     this.horizontalAlignment = horizontalAlignment
@@ -76,5 +75,4 @@ export default class GridData extends LayoutData {
     this.minimumWidth = minimumWidth
     this.minimumHeight = minimumHeight
   }
-
 }

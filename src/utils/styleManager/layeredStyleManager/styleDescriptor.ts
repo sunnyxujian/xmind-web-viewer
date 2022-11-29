@@ -1,19 +1,9 @@
-
 const fixedStyleDescriptor = {
-
-  'before-user': [
-  ]
-
+  'before-user': [],
 }
 
 const StructureDescriptorFor = {
-
-  'before-user': [
-  ]
-
+  'before-user': [],
 }
 
-export {
-  fixedStyleDescriptor,
-  StructureDescriptorFor,
-}
+export { fixedStyleDescriptor, StructureDescriptorFor }

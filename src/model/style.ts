@@ -7,7 +7,6 @@ export interface StyleData extends ModelData {
 }
 
 export default class Style extends Model {
-
   private readonly _data: StyleData
 
   constructor(data: StyleData) {
@@ -18,5 +17,4 @@ export default class Style extends Model {
   getStyleValue(key: StyleKey) {
     return this._data.properties[key]
   }
-
 }

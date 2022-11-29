@@ -6,7 +6,6 @@ import BranchViewController from '../../../viewController/branchViewController'
 import { getFontSize } from './topicShapeUtils'
 
 export default class CircleTopicShape extends TopicShape {
-
   constructor() {
     super(TopicShapeType.CIRCLE)
   }
@@ -15,13 +14,7 @@ export default class CircleTopicShape extends TopicShape {
     let cx = bounds.x + bounds.x + bounds.width
     let cy = bounds.y + bounds.y + bounds.height
     let r = bounds.x + bounds.width
-    return (
-      `M ${cx} ${cy}` +
-      `m ${-r} 0` +
-      `a ${r}, ${r} 0 1, 0 ${r * 2}, 0` +
-      `a ${r}, ${r} 0 1, 0 ${-r * 2}, 0` +
-      `z`
-    )
+    return `M ${cx} ${cy}` + `m ${-r} 0` + `a ${r}, ${r} 0 1, 0 ${r * 2}, 0` + `a ${r}, ${r} 0 1, 0 ${-r * 2}, 0` + `z`
   }
 
   getTopicMargins(branch: BranchViewController, size: Size) {
@@ -40,8 +33,7 @@ export default class CircleTopicShape extends TopicShape {
       top: (dr - height) / 2 + margin + borderWidth + fontSize * scale,
       left: (dr - width) / 2 + margin + borderWidth + fontSize * scale,
       bottom: (dr - height) / 2 + margin + borderWidth + fontSize * scale,
-      right: (dr - width) / 2 + margin + borderWidth + fontSize * scale
+      right: (dr - width) / 2 + margin + borderWidth + fontSize * scale,
     }
   }
-  
 }

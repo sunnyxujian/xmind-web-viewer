@@ -2,11 +2,14 @@ import ViewController from './viewController'
 import BranchViewController from './branchViewController'
 import ViewControllerType from '../common/constants/viewControllers'
 import ConnectionView, { ConnectionViewData } from '../view/connectionView'
-import { isRootBranch, isAttachedBranch, getMaskInfo } from '../utils/branchUtils'
+import {
+  isRootBranch,
+  isAttachedBranch,
+  getMaskInfo,
+} from '../utils/branchUtils'
 import { isMapStructure } from '../structure/helper/structureUtils'
 
 export default class ConnectionViewController extends ViewController {
-
   private _startBranch: BranchViewController
   private _endBranch: BranchViewController
   private readonly _view: ConnectionView
@@ -35,11 +38,17 @@ export default class ConnectionViewController extends ViewController {
     const endBranch = this.endBranch
     const startBranch = this.startBranch
     if (startBranch && endBranch) {
-      let data: ConnectionViewData = startBranch.getStructureObject().getAttachedConnectionInfo(startBranch, endBranch)
-      if (isRootBranch(startBranch) && isAttachedBranch(endBranch) && isMapStructure(startBranch)) {
+      let data: ConnectionViewData = startBranch
+        .getStructureObject()
+        .getAttachedConnectionInfo(startBranch, endBranch)
+      if (
+        isRootBranch(startBranch) &&
+        isAttachedBranch(endBranch) &&
+        isMapStructure(startBranch)
+      ) {
         data.maskInfo = getMaskInfo(startBranch)
       }
-      
+
       this.view.render(data, endBranch.sheetViewController.view)
     }
   }
@@ -53,7 +62,7 @@ export default class ConnectionViewController extends ViewController {
   }
 
   get endBranch(): BranchViewController {
-    if (!this._endBranch && (this.parent instanceof BranchViewController)) {
+    if (!this._endBranch && this.parent instanceof BranchViewController) {
       this._endBranch = this.parent
     }
     return this._endBranch
@@ -68,5 +77,4 @@ export default class ConnectionViewController extends ViewController {
     }
     return this._startBranch
   }
-
 }

@@ -18,7 +18,6 @@ export interface BranchViewBackboneData extends BranchViewData {
 }
 
 export default class BranchView extends View {
-
   type = ViewType.BRANCH
 
   spacingMajor: number
@@ -66,10 +65,10 @@ export default class BranchView extends View {
     fishBackbone.attr({ d: `M ${x} ${-delta} L 0 0 L ${x} ${delta} z` })
 
     // Set Style
-    fishTailFill.attr({ 
+    fishTailFill.attr({
       fill: fillColor,
       stroke: 'none',
-      opacity: 1
+      opacity: 1,
     })
 
     const renderLineWidth = lineWidth > 0.5 ? lineWidth : 1
@@ -79,13 +78,13 @@ export default class BranchView extends View {
       renderBorderColor = fillColor
     }
 
-    fishTailBorder.attr({ 
+    fishTailBorder.attr({
       stroke: renderBorderColor,
-      'stroke-width': renderLineWidth
+      'stroke-width': renderLineWidth,
     })
     fishBackbone.attr({
       stroke: renderBorderColor,
-      'stroke-width': renderLineWidth
+      'stroke-width': renderLineWidth,
     })
 
     // Other
@@ -104,5 +103,4 @@ export default class BranchView extends View {
   get content() {
     return this._svg
   }
-
 }

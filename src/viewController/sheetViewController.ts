@@ -80,4 +80,8 @@ export default class SheetViewController extends ViewController {
   translate(x: number, y: number) {
     this.view.canvas.translate(x, y);
   }
+
+  transform(data) {
+    this.view.canvas.transform(data);
+  }
 }

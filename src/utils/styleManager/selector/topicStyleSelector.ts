@@ -5,7 +5,6 @@ import { ClassType, StyleKey } from '../../../common/constants/styles'
 import { isAttachedBranch, getBranchIndex, getParentBranch } from '../../branchUtils'
 
 export default class TopicStyleSelector extends MindMapStyleSelector {
-
   protected getClassName(target: ViewController): string {
     if (target instanceof BranchViewController) {
       const layer = target.getLayer()
@@ -27,28 +26,28 @@ export default class TopicStyleSelector extends MindMapStyleSelector {
     if (target instanceof BranchViewController) {
       switch (key) {
         case StyleKey.LINE_COLOR: {
-          return this._getMultiLineColors(target) ||
-            this.getThemeStyleValue(target, key) ||
-            this._getStyleValueFromParent(target, key, { ignoreDefault: true })
+          return this._getMultiLineColors(target) || this.getThemeStyleValue(target, key) || this._getStyleValueFromParent(target, key, { ignoreDefault: true })
         }
 
         case StyleKey.BORDER_LINE_COLOR: {
-          return this.getThemeStyleValue(target, key) ||
-            this.getStyleValue(target, StyleKey.LINE_COLOR, { ignoreDefault: true })
+          return this.getThemeStyleValue(target, key) || this.getStyleValue(target, StyleKey.LINE_COLOR, { ignoreDefault: true })
         }
 
         case StyleKey.BORDER_LINE_WIDTH: {
-          return this.getThemeStyleValue(target, key) ||
+          return (
+            this.getThemeStyleValue(target, key) ||
             this.getStyleValue(target, StyleKey.LINE_WIDTH, { ignoreDefault: true }) ||
             this._getStyleValueFromParent(target, StyleKey.LINE_WIDTH, { ignoreDefault: true })
+          )
         }
 
         case StyleKey.LINE_WIDTH: {
-          return this.getThemeStyleValue(target, key) ||
-            this._getStyleValueFromParent(target, key, { ignoreDefault: true }) || 
+          return (
+            this.getThemeStyleValue(target, key) ||
+            this._getStyleValueFromParent(target, key, { ignoreDefault: true }) ||
             this.getDefaultStyleValue(target, key)
+          )
         }
-
       }
     }
   }
@@ -77,5 +76,4 @@ export default class TopicStyleSelector extends MindMapStyleSelector {
       return colors[indexInParent % colors.length]
     }
   }
-
 }

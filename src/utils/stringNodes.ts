@@ -2,26 +2,26 @@ import FontInfo from './fontInfo'
 import { createCanvas } from 'canvas'
 
 interface FontNode {
-  content?: string,
+  content?: string
   style?: FontInfo
 }
 
 const FONT_WEIGHT_STRING_TO_NUMBER = {
-  'normal': 400,
-  'regular': 400,
-  'bold': 700
+  normal: 400,
+  regular: 400,
+  bold: 700,
 }
 
 function str2NodesArr(s: string, fontInfo: FontInfo): FontNode[][] {
   const arr = s.split('\n')
-  return arr.map((s) => (s === '') ? [] : [{ content: s, style: fontInfo }])
+  return arr.map(s => (s === '' ? [] : [{ content: s, style: fontInfo }]))
 }
 
 function getNodesSize(nodes: FontNode[]) {
   let width = 0
   let height = 0
 
-  nodes.forEach((node) => {
+  nodes.forEach(node => {
     const { width: w, height: h } = getTextSize(node)
     width += w
     height = Math.max(height, h)
@@ -56,7 +56,7 @@ function getTextSize(node: FontNode) {
   ctx.font = fontArr.filter(item => item).join(' ')
 
   const lines = node.content.split('\n')
-  const widthArr = lines.map((line) => {
+  const widthArr = lines.map(line => {
     return ctx.measureText(line).width
   })
 
@@ -65,9 +65,4 @@ function getTextSize(node: FontNode) {
   return { width, height }
 }
 
-export {
-  str2NodesArr,
-  getNodesSize,
-  getTextSize,
-  FontNode,
-}
+export { str2NodesArr, getNodesSize, getTextSize, FontNode }

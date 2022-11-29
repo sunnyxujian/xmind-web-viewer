@@ -20,7 +20,6 @@ export interface SheetData extends ModelData {
 }
 
 export default class Sheet extends Model {
-
   private _rootTopic: Topic
   private _theme: Theme
   private readonly _data: SheetData
@@ -51,5 +50,4 @@ export default class Sheet extends Model {
     const style = this._data.style
     return style?.properties[key]
   }
-
 }

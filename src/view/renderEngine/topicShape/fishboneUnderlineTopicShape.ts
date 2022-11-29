@@ -8,7 +8,6 @@ import { Direction } from '../../../common/constants/models'
 import { ROTATED_TAN } from '../../../common/constants/layoutSettings'
 
 export default class FishboneUnderlineTopicShape extends UnderlineTopicShape {
-
   getTopicMargins(branch: BranchViewController, size: Size) {
     let { lm, rm, tm, bm, lw } = getUnits(branch)
 
@@ -26,14 +25,14 @@ export default class FishboneUnderlineTopicShape extends UnderlineTopicShape {
       top: lw,
       left: lm,
       bottom: lw,
-      right: rm
+      right: rm,
     }
   }
 
-  private _getOffsetInfo(branch: BranchViewController): { hasOffsetX: boolean, dire: Direction.LEFT | Direction.RIGHT } {
+  private _getOffsetInfo(branch: BranchViewController): { hasOffsetX: boolean; dire: Direction.LEFT | Direction.RIGHT } {
     let hasOffsetX = false
     let dire = null
-    
+
     const parent = getParentBranch(branch)
     if (parent.getLayer() >= 2 && getBranchIndex(branch) !== 0) {
       const sc = branch.structureClass
@@ -45,8 +44,7 @@ export default class FishboneUnderlineTopicShape extends UnderlineTopicShape {
         dire = Direction.LEFT
       }
     }
-    
+
     return { hasOffsetX, dire }
   }
-
 }

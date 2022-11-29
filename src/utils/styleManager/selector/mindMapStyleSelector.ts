@@ -9,11 +9,10 @@ import * as LayeredStyleManager from '../layeredStyleManager/layeredStyleManager
 const SPECIAL_HANDLE_KEYS = [StyleKey.FONT_FAMILY]
 
 export interface StyleOptions {
-  ignoreDefault?: boolean,
+  ignoreDefault?: boolean
 }
 
 export default class MindMapStyleSelector {
-
   getStyleValue(target: ViewController, key: StyleKey, options: StyleOptions = {}): string {
     key = this.handleKey(target, key)
     if (SPECIAL_HANDLE_KEYS.includes(key)) {
@@ -77,12 +76,15 @@ export default class MindMapStyleSelector {
     fontFamily = fontFamily.reduce((arr, item) => {
       return arr.concat(item.split(','))
     }, [])
-    return fontFamily.map(item => {
-      if (item[0] === "'" || item[0] === '"') {
-        return item
-      }
-      return `'${item}'`
-    }).concat(['sans-serif']).join(',')
+    return fontFamily
+      .map(item => {
+        if (item[0] === "'" || item[0] === '"') {
+          return item
+        }
+        return `'${item}'`
+      })
+      .concat(['sans-serif'])
+      .join(',')
   }
 
   protected getLayeredStyleValue(target: ViewController, layerName: StyleLayer, key: StyleKey): string {
@@ -141,5 +143,4 @@ export default class MindMapStyleSelector {
       textTransform: this.getStyleValue(target, StyleKey.TEXT_TRANSFORM),
     }
   }
-
 }

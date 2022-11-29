@@ -12,14 +12,25 @@ const HORIZONTAL_SCALE = 1
 const VERTICAL_SCALE = 0.5
 
 export default class EllipseTopicShape extends TopicShape {
-
   constructor() {
     super(TopicShapeType.ELLIPSE)
   }
 
   protected calcTopicShapePath(bounds: Bounds) {
-    return 'M ' + bounds.x + ' ' + (bounds.y + bounds.y + bounds.height) +
-      'A ' + (bounds.x + bounds.width) + ' ' + (bounds.y + bounds.height) + ' 0 1 1 ' + (bounds.x) + ' ' + (bounds.y + bounds.y + bounds.height + 0.001)
+    return (
+      'M ' +
+      bounds.x +
+      ' ' +
+      (bounds.y + bounds.y + bounds.height) +
+      'A ' +
+      (bounds.x + bounds.width) +
+      ' ' +
+      (bounds.y + bounds.height) +
+      ' 0 1 1 ' +
+      bounds.x +
+      ' ' +
+      (bounds.y + bounds.y + bounds.height + 0.001)
+    )
   }
 
   getTopicMargins(branch: BranchViewController, size: Size) {
@@ -28,10 +39,10 @@ export default class EllipseTopicShape extends TopicShape {
     const w = size.width * 0.5 + CORNER_GAP
 
     const a = 1
-    const b = 2 * (k * w + h) / k
-    const c = 4 * w * h / k
+    const b = (2 * (k * w + h)) / k
+    const c = (4 * w * h) / k
     const d = 0
-    const e = -w * w * h * h / (k * k)
+    const e = (-w * w * h * h) / (k * k)
 
     const l = this._newton([a, b, c, d, e], w / 2)
     const t = k * l
@@ -46,10 +57,10 @@ export default class EllipseTopicShape extends TopicShape {
     const fontSize = Math.min(50, getFontSize(branch))
 
     return {
-      top:topicMargins.top + minHeight + fontSize * VERTICAL_SCALE,
-      bottom:topicMargins.bottom + minHeight + fontSize * VERTICAL_SCALE,
-      left:topicMargins.left + minWidth + fontSize * HORIZONTAL_SCALE,
-      right:topicMargins.right + minWidth + fontSize * HORIZONTAL_SCALE
+      top: topicMargins.top + minHeight + fontSize * VERTICAL_SCALE,
+      bottom: topicMargins.bottom + minHeight + fontSize * VERTICAL_SCALE,
+      left: topicMargins.left + minWidth + fontSize * HORIZONTAL_SCALE,
+      right: topicMargins.right + minWidth + fontSize * HORIZONTAL_SCALE,
     }
   }
 
@@ -77,7 +88,7 @@ export default class EllipseTopicShape extends TopicShape {
     }
     return current
   }
-  
+
   private _f(coefs: number[], x: number) {
     const length = coefs.length
     let y = 0
@@ -95,5 +106,4 @@ export default class EllipseTopicShape extends TopicShape {
     }
     return y
   }
-
 }

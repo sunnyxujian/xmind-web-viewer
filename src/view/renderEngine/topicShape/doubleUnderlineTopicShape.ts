@@ -6,7 +6,6 @@ import Size from '../../../utils/size'
 import { getUnits } from './topicShapeUtils'
 
 export default class DoubleUnderlineTopicShape extends TopicShape {
-
   constructor() {
     super(TopicShapeType.DOUBLE_UNDERLINE)
   }
@@ -14,12 +13,7 @@ export default class DoubleUnderlineTopicShape extends TopicShape {
   protected calcTopicShapePath(bounds: Bounds) {
     const padding = 5
     const { x, y, width, height } = bounds
-    return (
-      `M ${x} ${y + height - padding}` +
-      `L ${x + width} ${y + height - padding}` +
-      `M ${x} ${y + height}` +
-      `L ${x + width} ${y + height}`
-    )
+    return `M ${x} ${y + height - padding}` + `L ${x + width} ${y + height - padding}` + `M ${x} ${y + height}` + `L ${x + width} ${y + height}`
   }
 
   getTopicMargins(branch: BranchViewController, size: Size) {
@@ -28,8 +22,7 @@ export default class DoubleUnderlineTopicShape extends TopicShape {
       top: tm,
       left: lm,
       bottom: bm + lw,
-      right: rm
+      right: rm,
     }
   }
-
 }

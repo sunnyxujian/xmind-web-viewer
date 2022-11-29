@@ -5,7 +5,6 @@ import * as StyleManager from '../utils/styleManager'
 import TopicViewController from './topicViewController'
 
 export default class TopicTitleViewController extends TextViewController {
-
   readonly type = ViewControllerType.TOPIC_TITLE
 
   private readonly _view: TopicTitleView
@@ -33,5 +32,4 @@ export default class TopicTitleViewController extends TextViewController {
   get view() {
     return this._view
   }
-
 }

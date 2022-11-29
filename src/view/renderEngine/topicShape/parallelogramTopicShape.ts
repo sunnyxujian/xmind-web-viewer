@@ -3,15 +3,25 @@ import { TopicShapeType } from '../../../common/constants/styles'
 import Bounds from '../../../utils/bounds'
 import Size from '../../../utils/size'
 import BranchViewController from '../../../viewController/branchViewController'
-import { getFontSize, getLineFocusType, LineFocusType, offsetPointCalcFnMap, getStartDirection, addPositionByDirection, getEndDirection, relativePosToRealPos, getJointPosition, END_OFFSET } from './topicShapeUtils'
+import {
+  getFontSize,
+  getLineFocusType,
+  LineFocusType,
+  offsetPointCalcFnMap,
+  getStartDirection,
+  addPositionByDirection,
+  getEndDirection,
+  relativePosToRealPos,
+  getJointPosition,
+  END_OFFSET,
+} from './topicShapeUtils'
 import { Direction } from '../../../common/constants/models'
 
 export default class ParallelogramTopicShape extends TopicShape {
-
   constructor() {
     super(TopicShapeType.PARALLELOGRAM)
   }
-  
+
   protected calcTopicShapePath(bounds: Bounds) {
     return (
       `M ${bounds.x + bounds.y + bounds.height} ${bounds.y}` +
@@ -34,7 +44,7 @@ export default class ParallelogramTopicShape extends TopicShape {
       top: topicMargins.top + fontSize * verScale,
       left: topicMargins.left + Math.round(size.height * scale) + 1 + fontSize * horScale,
       bottom: topicMargins.bottom + fontSize * verScale,
-      right: topicMargins.right + Math.round(size.height * scale) + 1 + fontSize * horScale
+      right: topicMargins.right + Math.round(size.height * scale) + 1 + fontSize * horScale,
     }
   }
 
@@ -50,12 +60,12 @@ export default class ParallelogramTopicShape extends TopicShape {
     }
   }
 
-  private _calcParallelogram (parent: BranchViewController, child: BranchViewController) {
+  private _calcParallelogram(parent: BranchViewController, child: BranchViewController) {
     const dir = getStartDirection(parent, child)
     const bounds = parent.topicViewController.shapeBounds
     const offsetX = -bounds.height / 4
     const originPos = { x: 0, y: 0 }
-  
+
     return addPositionByDirection(originPos, dir, offsetX, 0)
   }
 
@@ -74,5 +84,4 @@ export default class ParallelogramTopicShape extends TopicShape {
       return addPositionByDirection(pos, dire, offset)
     }
   }
-
 }

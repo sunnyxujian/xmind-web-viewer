@@ -6,7 +6,6 @@ import BranchViewController from '../../../viewController/branchViewController'
 import { getUnits } from './topicShapeUtils'
 
 export default class FishHeadToLeftTopicShape extends TopicShape {
-
   constructor() {
     super(TopicShapeType.FISH_HEAD_TO_LEFT)
   }
@@ -15,7 +14,7 @@ export default class FishHeadToLeftTopicShape extends TopicShape {
     return (
       `M ${bounds.x} ${bounds.y + bounds.y + bounds.height}` +
       `Q ${bounds.x + bounds.width / 3} ${bounds.y} ${bounds.x + bounds.width} ${bounds.y}` +
-      `L ${bounds.x + bounds.width} ${bounds.y + bounds.height}`+
+      `L ${bounds.x + bounds.width} ${bounds.y + bounds.height}` +
       `Q ${bounds.x + bounds.width / 3} ${bounds.y + bounds.height} ${bounds.x} ${bounds.y + bounds.y + bounds.height}` +
       `Z`
     )
@@ -37,8 +36,7 @@ export default class FishHeadToLeftTopicShape extends TopicShape {
       top: v + tbm + lw,
       left: l + lw,
       bottom: v + tbm + lw,
-      right: r + lw
+      right: r + lw,
     }
   }
-  
 }

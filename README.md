@@ -1,4 +1,3 @@
-# **DEPRECATED** - Never ever use it in a production environment!
 
 # XMind Viewer 
 
