@@ -1,0 +1,1131 @@
+[
+  {
+    "id": "6e4821807f3b501939067a1605",
+    "class": "sheet",
+    "title": "画布 1",
+    "rootTopic": {
+      "id": "b9aa22deba98b3b20c7ac8aca2",
+      "class": "topic",
+      "title": "算法",
+      "structureClass": "org.xmind.ui.map.unbalanced",
+      "children": {
+        "attached": [
+          {
+            "title": "1.1 链表",
+            "id": "87e1d72d-5d08-470d-a02d-40aac420671e"
+          },
+          {
+            "title": "1.2 队列",
+            "id": "adb45031-eaae-41e3-a754-d96c842d59a6"
+          },
+          {
+            "title": "1.3 递归与栈",
+            "id": "0135c6d8-750e-46b1-bd36-fa11e5c3b6a7"
+          },
+          {
+            "title": "2.1 二叉树",
+            "id": "8178e849-f556-48b8-a9ff-3007d0f7f9b1"
+          },
+          {
+            "title": "2-2. 堆与优先队列",
+            "id": "e5a181aa-425f-476c-b2d2-65415964fa4e"
+          },
+          {
+            "id": "193b56735e689ae86a01d91513",
+            "title": "2-3. 并查集",
+            "markers": []
+          },
+          {
+            "id": "b58888b5ceebbf0e68dada0656",
+            "title": "3-1. 快速排序及优化",
+            "children": {
+              "attached": [
+                {
+                  "title": "思想：",
+                  "id": "e96178d7-bd44-44a0-ac1f-25b377a2a4e7",
+                  "customWidth": 51.1875,
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "1. 找一个数据作为基准；\n2. 通过划分将待排序的序列分成前后两部分，其中前一部分的数据都基准数要小，后一部分数据比基准要大；\n3. 然后再递归调用函数对两部分分别进行快速排序，以此使整个序列达到有序",
+                        "id": "8320b427-0135-4809-82b1-b98aab525fae",
+                        "customWidth": 313
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "使用：",
+                  "id": "8ffa9619-a168-4a70-a04a-b722df4a35f9",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "1. ",
+                        "id": "0186c0cf-3a4b-41cf-a88f-f1a34109dfab"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "场景：",
+                  "id": "098d4543-10fc-4011-9e0d-6645d2b44cd3"
+                },
+                {
+                  "title": "总结：",
+                  "id": "053726ec-4773-4100-bd3e-f3a2d636090f",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "快排的阶段性排序结果特点是： 第 i 趟完成时，会有 i 个以上的数出现在它 *最终* 将要出现的位。它左边如果有数都比它小，它右边如果有数都比它大。",
+                        "id": "490d6e70-bf88-4052-b382-d98aec1e2d74",
+                        "customWidth": 343
+                      },
+                      {
+                        "title": "冒泡排序和选择排序的阶段性排序结果特点是：  经过 i 趟排序后应该有 i 个元素处于最终位置（最左 / 右端）。",
+                        "id": "37e5ca57-5b5c-4ff5-a30b-5ecac38b6eae",
+                        "customWidth": 346
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "boundaries": [],
+            "markers": [],
+            "branch": "folded"
+          },
+          {
+            "id": "67ddbcb1-85c9-4478-a0aa-580e9fdcd971",
+            "title": "3-2. 归并排序     ",
+            "children": {
+              "attached": [
+                {
+                  "title": "思想：",
+                  "id": "52bb863c-49e1-421d-9cf2-5ab18995a72e",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "左边处理一下，得到左边信息；\n右边处理一下，得到右边信息；\n最后再处理，横跨左右两边信息；",
+                        "id": "a4c40884-d300-4950-bec9-5bc7ab53f31d"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "使用：",
+                  "id": "fefd1cc1-c1f0-49dc-9dcd-96a330f53e10",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "用归并发对数据排序，合并过程中增加一些其他操作或统计",
+                        "id": "efbfefae-13e1-40ef-864b-ddeeeb98d200",
+                        "customWidth": 308.1875
+                      }
+                    ]
+                  },
+                  "customWidth": 0
+                },
+                {
+                  "title": "场景：",
+                  "id": "9d50faaa-ed3d-4aa2-beed-4f8cd728b651",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "整段数据拆分，再按某种规则合并在一起",
+                        "id": "aca3965b-4065-4c50-8d6a-e151a0c33601"
+                      },
+                      {
+                        "title": "多段数据按某个规则合并为1段",
+                        "id": "02bad5b3-fd4d-482e-879b-6de78bfff025"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "总结： ",
+                  "id": "c87d7800-4c8e-4ad1-a97c-93ac7f22b036",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "在做一些其他的数据统计时，一定注意保持归并排序的完整性",
+                        "id": "d2b05099-0bcb-43ab-8fbf-5c48d06bbf26"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "branch": "folded"
+          },
+          {
+            "title": "3-3. 排序思想",
+            "id": "15b1ca9a-7973-4bc6-a512-e9671b0fe280",
+            "children": {
+              "attached": [
+                {
+                  "title": "计数排序",
+                  "id": "06bc1331-0d43-48d5-80de-7b1877afd900",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "场景： 排序数据种类较少",
+                        "id": "23d80aee-1950-463b-a1c6-531237550ad9"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "基数排序",
+                  "id": "f3e49f7f-34b8-4dfc-98da-374bed636233",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "数据特性：可保证数据排序的稳定性",
+                        "id": "7298b4f9-7a47-4be6-bf6f-c721413d6b68"
+                      },
+                      {
+                        "title": "场景： 数据可拆分高低位",
+                        "id": "e0f18bad-809c-4a4e-9783-247f003a74f3"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "拓扑排序",
+                  "id": "21f354fc-2021-44ac-b24f-d9d3a319f33d"
+                }
+              ]
+            },
+            "branch": "folded"
+          },
+          {
+            "title": "字典树",
+            "id": "dfee98e1-f052-48a0-a255-0eae655403b5"
+          },
+          {
+            "title": "字符串匹配",
+            "id": "478c4ce6-92d5-4e83-b51f-93483f5cb4c1"
+          },
+          {
+            "title": "动态规划",
+            "id": "c0f54fd8-f010-46af-9e31-a644aa20c188",
+            "children": {
+              "attached": [
+                {
+                  "title": "状态转移方程",
+                  "id": "7a432002-8a77-40e0-8012-71d1c57584f8",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "状态",
+                        "id": "1e0de96b-6b5d-4698-aaeb-73c8acf6cbdd"
+                      },
+                      {
+                        "title": "决策",
+                        "id": "d54d2958-fc69-447f-8fc8-c26cdea190a0"
+                      },
+                      {
+                        "title": "阶段",
+                        "id": "51da8675-8951-4676-ab5d-719d85b8d9fa"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "地推问题求解方向",
+                  "id": "146560b0-2ba7-42b5-800d-5a724800e030",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "我从哪里来",
+                        "id": "544590e3-847a-45aa-8ab0-cdea5e2d19cc"
+                      },
+                      {
+                        "title": "我到哪里去",
+                        "id": "5fde3913-7060-4018-81e5-f401d10367d2"
+                      }
+                    ],
+                    "summary": [
+                      {
+                        "title": "地推的求解顺序就是状态依赖图的一个拓扑序",
+                        "id": "f08173b9-2eda-45e3-96e6-263c8c3480af"
+                      }
+                    ]
+                  },
+                  "boundaries": [],
+                  "summaries": [
+                    {
+                      "id": "2d4b133a-f5b6-4c26-9ffd-5ac331de31ff",
+                      "range": "(0,1)",
+                      "topicId": "f08173b9-2eda-45e3-96e6-263c8c3480af"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "title": "递推算法及解题套路",
+            "id": "126aaee0-779a-4390-9a4a-bc3f1a039f8a",
+            "children": {
+              "attached": [
+                {
+                  "title": "数学归纳法",
+                  "id": "24724e53-3a7d-4f5e-82c9-574dee12d7d7",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "1. k0成立",
+                        "id": "84a63498-ae42-4fa5-82fa-b1711d70e986"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "地推使用步骤",
+                  "id": "5a805e6c-ff5b-41b8-8e4c-5a11daafb3ea",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "1. 确定递推 状态",
+                        "id": "a5f180b8-461a-4a4e-a12c-f32bc194e244"
+                      },
+                      {
+                        "title": "2. 确定递推 公式",
+                        "id": "76f31c63-23bf-4e35-852a-4aacf4dafbe7"
+                      },
+                      {
+                        "title": "3. 分析边界条件",
+                        "id": "0bf18c15-cc57-47af-80d2-707a9a955ffb"
+                      },
+                      {
+                        "title": "4. 程序实现",
+                        "id": "daa1e372-a909-45ed-b586-3c8ff1535d69"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "branch": "folded"
+          },
+          {
+            "title": "6.2 红黑树",
+            "id": "09e0938f-93a0-4b08-abf5-71c6c9db618f",
+            "children": {
+              "attached": [
+                {
+                  "title": "平衡条件",
+                  "id": "deb142ea-831d-4ecb-8a9e-ce8a70e63868"
+                },
+                {
+                  "title": "插入调整原则",
+                  "id": "0698844f-66e5-4be8-9674-d3dd147ee78c",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "调整之前路径上黑节点数量等于调整之后路径上黑节点数量",
+                        "id": "9e92d054-eea9-471b-8fca-de9463835a0c"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "title": "6.1（平衡）二叉排序树",
+            "id": "22261c5f-f491-418d-8111-5f5ad2575300",
+            "children": {
+              "attached": [
+                {
+                  "title": "使用",
+                  "id": "40e16655-6dd5-4ca7-9bcd-fcaea4cebe8f",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "二叉搜索树： 删除度为0，1，2的节点",
+                        "id": "b43c1db0-81f7-45a3-b714-272622a51967"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "失衡类型",
+                  "id": "a5d1bd04-f7f2-44db-af41-ad9c903a5b5c",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "LL",
+                        "id": "4d966efa-73c0-4279-9f1c-74d529ae33ee"
+                      },
+                      {
+                        "title": "RR",
+                        "id": "4c4d3910-3dbd-42db-b2fe-b06e13c1cee2"
+                      },
+                      {
+                        "title": "LR",
+                        "id": "d39803f1-8c24-4819-8e21-a15973d8257d"
+                      },
+                      {
+                        "title": "RL",
+                        "id": "7b97b910-e066-4327-9f33-bd50fb621da9"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "branch": "folded"
+          },
+          {
+            "title": "5. 单调队列/单调栈",
+            "id": "19f10782-0d22-4cdb-af56-06214d5d484e",
+            "position": {
+              "x": -284,
+              "y": 478.75
+            },
+            "children": {
+              "attached": [
+                {
+                  "title": "单调队列",
+                  "id": "4f3d55ce-d366-4bdd-8d4e-5d7a864ab5fc",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "概念",
+                        "id": "0a10ac0e-bb1e-4719-9e23-7512a55da790",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "单调队列",
+                              "id": "98545d9c-fcd0-4652-b3fc-571ea0c63b71"
+                            },
+                            {
+                              "title": "RMQ(x, y)",
+                              "id": "0d211162-8c18-47bb-8a27-cff38aa5d037",
+                              "children": {
+                                "attached": [
+                                  {
+                                    "title": "询问 [x, y] 区间内部最小值",
+                                    "id": "572c9bcd-0067-4759-9776-ca291c1f90e3"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "思想",
+                        "id": "66a4b963-dffe-4418-a671-06e0ce24cdf2",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "队首元素永远是当前维护区间最 小（大）值；\n维护最小值的单调队列为递增队列。\n\n当滑动窗口移动到末尾时，单调队列（包含队首超出范围被踢出的元素）即满足RMQ(x, end)的最小记录元素值。\n\n单调序列是原序列的另外一种信息表示方式；\n提取的原序列重要信息。",
+                              "id": "d50d2b4c-923f-4e6a-8749-fc7f4c034b05"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "场景",
+                        "id": "bc2d7e8d-e82a-4536-990c-6e9a12c0303a",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "适合维护区间（窗口）最值问题",
+                              "id": "7743743f-3625-464c-ac58-d63b7ee71185"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "使用",
+                        "id": "50fe1db2-3ee3-4864-8460-1277a5013f4d",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "入队：（维护单调性）\n滑动窗口最后一个元素，对尾入队。\n把之前破坏单调性的元素从队尾移出\n\n出队：（维护元素生命周期）\n如果队首元素超出区间范围，就将元素从队首出队",
+                              "id": "4d71bdc1-8f48-4973-93e3-3ede90310f5e"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "技巧",
+                        "id": "93ef32e8-e11a-49a6-b72a-29da2e379687",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "单调队列中记录相应元素的下标（记录原信息）",
+                              "id": "6802d13f-5e57-440d-9643-30f35ae6b752"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "单调栈 ",
+                  "id": "83ff7cc6-b15c-42b2-ae48-ee8ffd81f66b",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "场景",
+                        "id": "2a95b907-a576-4164-845d-45b50f33baf1"
+                      },
+                      {
+                        "title": "思想",
+                        "id": "a40b02cb-8fec-4860-84e4-85f8b553c606",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "维护( 前面 或 后面 )最近的大于或小于关系",
+                              "id": "fec4e3cc-90fa-44b9-8887-0e678175532d"
+                            },
+                            {
+                              "title": "以求最近最小值为例（ 维护递增队列）：\n\n1. 元素入队时，如果当前值小于单调队列队尾某些值，则当前值是这些值后面最近的大于自己的值；\n2. 当破坏单调性的值被弹出后，单调队列队尾的值就是当前值前面最近的小于自己的值；\n",
+                              "id": "5ad4e271-7ee7-4c40-b6fc-1f68c7bf900f"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "使用",
+                        "id": "5c60cf8c-4c7b-4c7c-9521-658a5024f8b1",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "查找最近的最小值为例 - 维护递增队列\n\n后面：（维护单调性）\n滑动窗口最后一个元素，对尾入队。\n把之前破坏单调性的元素从队尾移出，\n当前值就是这些元素后面最近的大于自己的值。\n\n前面： \n当破坏单调性的值被弹出后，单调队列队尾的值就是当前值前面最近的小于自己的值；",
+                              "id": "00d30315-449a-49d1-a8ca-d72ee2436b05"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "技巧",
+                        "id": "1dc8f758-0076-4f59-a0fb-3df2b10c13f4",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": " 查找最近的小值，就使用单调递增栈（不论前后）。",
+                              "id": "3cb08cbd-daa0-4212-b129-c96241c752c5"
+                            },
+                            {
+                              "title": "+ 查找后面最值，在while循环中赋值， \n+ 查找前面最值在while结束后赋值。",
+                              "id": "76fb6082-2216-4773-be01-44fcf0a2da0a"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "notes": {
+              "plain": {
+                "content": "队列和栈 都是逻辑上的数据结构"
+              },
+              "ops": {
+                "ops": [
+                  {
+                    "attributes": {
+                      "bold": true
+                    },
+                    "insert": "队列和栈 都是逻辑上的数据结构"
+                  },
+                  {
+                    "insert": "\n"
+                  }
+                ]
+              },
+              "html": {
+                "content": {
+                  "paragraphs": [
+                    {
+                      "spans": [
+                        {
+                          "style": {
+                            "type": "text",
+                            "properties": {
+                              "fo:font-weight": "bold"
+                            }
+                          },
+                          "text": "队列和栈 都是逻辑上的数据结构"
+                        }
+                      ]
+                    },
+                    {
+                      "spans": [
+                        {
+                          "text": ""
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "title": "4-3. 深搜与广搜",
+            "id": "97e76814-84da-4bea-8995-a8e2bd985718",
+            "children": {
+              "attached": [
+                {
+                  "title": "概念",
+                  "id": "103acb11-8e95-467c-a16a-f1e97fd13dcd",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "问题求解树",
+                        "id": "e2b27e73-4070-416a-84ab-73cc02edff9a"
+                      },
+                      {
+                        "title": "减枝与优化",
+                        "id": "3a32ce57-7602-4606-a8dd-d46e6d92e83d",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "根据某些条件过滤掉不需要处理的节点",
+                              "id": "8f948674-252d-47fb-ad9d-fe94fcb93e2a"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "思想",
+                  "id": "f592d08e-c338-4a5f-aa35-bcbfdba69ce6",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "对于问题求解树不同的遍历方式，\n遍历时记录节点信息",
+                        "id": "684d51a3-f836-4bdf-bb60-c89ad6a03d33"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "核心",
+                  "id": "d78dea14-7c67-4e95-a989-95a2c63170d7",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "设计问题搜索树的状态。\n问题求解树的状态表现为：一类打包的数据结构",
+                        "id": "28ed9bac-9ba6-4119-ab31-64d435b1a6c3"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "场景",
+                  "id": "5a50c456-aca0-4510-9048-4dc53869da79",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "深搜",
+                        "id": "c1c7ea9b-d5e0-4888-a200-91e1330b23b9"
+                      },
+                      {
+                        "title": "广搜",
+                        "id": "af335943-b9f2-404b-b7ea-3d1fd9d2c4ae",
+                        "children": {
+                          "attached": [
+                            {
+                              "id": "6c34dfee-565b-4244-88a5-b283bf4444d7",
+                              "title": "解决最优路径问题。\n按层（下一步的所有可能性）处理"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "使用",
+                  "id": "890649fc-db04-4f8e-9ea0-c7b769dd0a5f",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "广搜",
+                        "id": "7a5ad783-54e4-4d43-9359-b9060e3c2afb",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "队列， 先进先出。\n\n放入第一个状态，\n如果队列不为空循环，\n取出队首状态，\n处理当前状态，\n放入下一层（合法）状态，\npop状态。",
+                              "id": "a4f74669-bae2-48de-ac6e-f694f34c143e",
+                              "position": {
+                                "x": -507,
+                                "y": 209.5
+                              },
+                              "children": {
+                                "attached": [
+                                  {
+                                    "title": "1. 取状态\n2. 状态扩展（放入下一层状态）\n3. 弹状态",
+                                    "id": "b644172e-ec7f-45a2-aa5e-60539b70eb6c"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "深搜",
+                        "id": "c0a21263-b83e-42fb-81e5-3737f4936241",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "递归，状态设计为递归参数。",
+                              "id": "231508b0-d122-4021-99a2-4f434851c100"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "技巧",
+                  "id": "4db0b482-fb3f-4d6d-8eda-df7527479395",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "记忆化",
+                        "id": "822f14c3-fd52-4704-b95e-202710e55519"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "branch": "folded"
+          },
+          {
+            "title": "4-2. 哈希表与布隆过滤器",
+            "id": "cf7d0de6-c6a0-41f7-9540-bbfbb5736316",
+            "children": {
+              "attached": [
+                {
+                  "title": "哈希表",
+                  "id": "7ded40da-a9ee-4827-8a38-e93ebb5c1659",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "哈希操作",
+                        "id": "af4fc744-a689-4ffb-b1dc-58d86944b38d",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "从高维映射到低纬",
+                              "id": "ee85131e-16f3-416a-a988-933bf19ebfe9"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "哈希函数",
+                        "id": "80fdafbc-959b-4a08-afd4-419d36bca5ae",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "将任意数据映射成数组下标\n利用数组进行快速存取数据",
+                              "id": "e35c5bfe-fa39-4883-b858-60ef6bfa258f"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "哈希冲突",
+                        "id": "4d315ec7-7e60-4a9d-b27c-30e4021ee51d",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "一定存在哈希冲突",
+                              "id": "7c866b34-c26a-401b-8ab5-3c2608eecdff"
+                            },
+                            {
+                              "title": "处理方法",
+                              "id": "bbfa1d0d-4d0a-4763-9a83-6a241928bbd1",
+                              "children": {
+                                "attached": [
+                                  {
+                                    "title": "开放定址法",
+                                    "id": "02bf7f65-d130-4f8b-a1c8-77fb10175b1c"
+                                  },
+                                  {
+                                    "title": "再哈希法",
+                                    "id": "87575986-53ac-4e4e-ae1c-12aa79e046d8"
+                                  },
+                                  {
+                                    "title": "建立公共溢出区",
+                                    "id": "f42734d6-af11-41d8-9c55-ad365d8a75b1"
+                                  },
+                                  {
+                                    "title": "拉链法",
+                                    "id": "03722627-3d19-4c78-bfa8-de4059dd46c2"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "布隆过滤器",
+                  "id": "f0608320-780e-4362-90a9-dc27434b7620",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "存储空间与元素数量无关",
+                        "id": "2e88ad85-9bde-41a1-8f01-a904fbe557cf"
+                      },
+                      {
+                        "title": "告诉你 “某样东西一定不存在或者可能存在”\n返回的结果是概率性的，而不是确切的。",
+                        "id": "1bc746c9-46ff-4846-b5e7-8bee2a651bf4"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "branch": "folded"
+          },
+          {
+            "title": "4-1. 二分查找/算法",
+            "id": "68710417-afb7-4bc0-8e14-d80808035be5",
+            "children": {
+              "attached": [
+                {
+                  "title": "思想",
+                  "id": "12544279-86af-4875-b2be-658036ddb082",
+                  "children": {
+                    "attached": [
+                      {
+                        "id": "3193aee5-9c38-4008-b56d-c8ec9f44ff87",
+                        "title": "保证查找值存在头尾指针范围内\n（区间位置调整时保证此思想正确即可）",
+                        "style": {
+                          "id": "60fdbace-9e14-4f87-a6d0-0c67290d8067",
+                          "properties": {
+                            "fo:text-align": "center",
+                            "fo:font-size": "14pt",
+                            "fo:font-weight": "normal",
+                            "fo:text-decoration": "none"
+                          }
+                        }
+                      },
+                      {
+                        "title": "二分查找二分的是查找区间，保证值在区间内\n二分的是问题规模，保证值在区间内",
+                        "id": "bb847556-c804-46ea-b20a-c96def3443bd"
+                      }
+                    ]
+                  },
+                  "branch": "folded"
+                },
+                {
+                  "title": "使用",
+                  "id": "d83ab12b-8aeb-4855-80fc-52e7cae0b5b8",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "1. 指定head，tail\n\n2. 循环 计算mid,  判断改变head和tail，以不断缩小范围区间 \n\nhead和tail赋值时要可以保证会缩小范围区间，避免出现死循环",
+                        "id": "14176867-5481-4266-975c-3cbeaee222a5"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "场景",
+                  "id": "1e568fd0-0eb7-4bc2-ba29-ef801e7439ef",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "基础模型",
+                        "id": "bf09b6f4-3c50-4d3f-8f3e-d1df6bc72978",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "查找某值",
+                              "id": "a6905937-8386-4fb3-9c58-0e3d59510d6e"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "01模型",
+                        "id": "38b1af7a-666d-4eea-828d-97545623f100",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "查找最后一位或第一位某特征值",
+                              "id": "f0038861-1b97-49a3-836b-1612984f1b86"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "数组和函数的关系",
+                        "id": "b1f75b37-f703-4053-a92f-a9adc6949226",
+                        "children": {
+                          "attached": [
+                            {
+                              "title": "函数是数组的压缩，数组势函数的延展",
+                              "id": "27d63b2b-baa0-415d-add7-b911aa8995d3"
+                            },
+                            {
+                              "title": "任何可以应用在数组上的算法都可以应用在某种函数上",
+                              "id": "3f3368c5-147a-496c-a7f6-cca32c2b4477"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "branch": "folded"
+                },
+                {
+                  "title": "特点",
+                  "id": "c00ff386-37a0-4ddf-b1e6-fbf5e0a9138f",
+                  "children": {
+                    "attached": [
+                      {
+                        "title": "在单调数组中查找",
+                        "id": "121aae6b-5fc4-44f1-9262-43d1bb6f4832"
+                      }
+                    ]
+                  },
+                  "branch": "folded"
+                }
+              ]
+            },
+            "position": {
+              "x": -265.5,
+              "y": 8
+            },
+            "branch": "folded"
+          }
+        ],
+        "summary": [
+          {
+            "title": "排序",
+            "id": "06f570ae-0443-4078-9b7b-e243a7254456",
+            "style": {
+              "properties": {
+                "fo:font-size": "18pt"
+              },
+              "id": "f1093399-6135-4b05-a12b-d5e3171c9e51"
+            }
+          },
+          {
+            "title": "查找",
+            "id": "b9b38925-924c-4ff1-8115-ec504cb2b612"
+          },
+          {
+            "title": "线性结构",
+            "id": "e6be9a7e-84d8-4c45-9c7c-6d76235cd829"
+          },
+          {
+            "title": "树状结构",
+            "id": "7a926575-768c-49cf-be34-e5b4b7f0c6d9"
+          }
+        ]
+      },
+      "extensions": [
+        {
+          "content": [
+            {
+              "content": "9",
+              "name": "right-number"
+            }
+          ],
+          "provider": "org.xmind.ui.map.unbalanced"
+        }
+      ],
+      "boundaries": [],
+      "summaries": [
+        {
+          "id": "9c9980d6-cb45-43a9-9a01-2e2767b0fb37",
+          "range": "(6,8)",
+          "topicId": "06f570ae-0443-4078-9b7b-e243a7254456"
+        },
+        {
+          "id": "782e5a3a-9bbd-4bbc-bb86-d3ba53b9b7cc",
+          "range": "(16,18)",
+          "topicId": "b9b38925-924c-4ff1-8115-ec504cb2b612"
+        },
+        {
+          "id": "9c607c7f-936a-42b3-83f7-917f8178a556",
+          "range": "(0,2)",
+          "topicId": "e6be9a7e-84d8-4c45-9c7c-6d76235cd829"
+        },
+        {
+          "id": "9623506a-c526-43f6-859d-3afac39e8f85",
+          "range": "(3,5)",
+          "topicId": "7a926575-768c-49cf-be34-e5b4b7f0c6d9"
+        }
+      ]
+    },
+    "theme": {
+      "id": "3cf9c6d92a497197dc239bbb9a",
+      "importantTopic": {
+        "type": "topic",
+        "properties": {
+          "fo:font-weight": "bold",
+          "fo:color": "#31455D",
+          "svg:fill": "#FFFF00"
+        }
+      },
+      "minorTopic": {
+        "type": "topic",
+        "properties": {
+          "fo:font-weight": "bold",
+          "fo:color": "#31455D",
+          "svg:fill": "#FFCB88"
+        }
+      },
+      "expiredTopic": {
+        "type": "topic",
+        "properties": {
+          "fo:font-style": "italic",
+          "fo:text-decoration": " line-through"
+        }
+      },
+      "centralTopic": {
+        "properties": {
+          "fo:font-family": "Open Sans",
+          "fo:font-weight": "400",
+          "fo:font-style": "italic",
+          "fo:font-size": "16pt",
+          "svg:fill": "#35455B",
+          "line-color": "#35455B",
+          "line-width": "2pt"
+        },
+        "styleId": "6fd886e14c1bbc0a2dcbab55d5",
+        "type": "topic"
+      },
+      "subTopic": {
+        "properties": {
+          "fo:font-weight": "normal",
+          "fo:color": "#35455B",
+          "fo:font-family": "Open Sans",
+          "fo:font-size": "14pt",
+          "shape-class": "org.xmind.topicShape.roundedRect",
+          "svg:fill": "#E2E9F1",
+          "fo:text-align": "left",
+          "border-line-width": "0"
+        },
+        "styleId": "337ac3b756cbdc37de32e87d4f",
+        "type": "topic"
+      },
+      "mainTopic": {
+        "properties": {
+          "fo:font-weight": "normal",
+          "fo:color": "#FFFFFF",
+          "fo:font-family": "Open Sans",
+          "fo:font-style": "normal",
+          "fo:font-size": "18pt",
+          "fo:text-decoration": "none",
+          "shape-class": "org.xmind.topicShape.roundedRect",
+          "svg:fill": "#84A1C9",
+          "line-class": "org.xmind.branchConnection.roundedElbow",
+          "line-color": "#35455B",
+          "line-width": "2pt",
+          "fo:text-align": "left",
+          "fo:text-transform": "manual",
+          "border-line-color": "#31455D",
+          "border-line-width": "2pt"
+        },
+        "styleId": "ee0ad513e5abb542adf54aceff",
+        "type": "topic"
+      },
+      "calloutTopic": {
+        "properties": {
+          "fo:font-weight": "400",
+          "fo:color": "#FFFFFF",
+          "fo:font-family": "Open Sans",
+          "fo:font-style": "italic",
+          "fo:font-size": "14pt",
+          "fo:text-decoration": "none",
+          "shape-class": "org.xmind.calloutTopicShape.balloon.roundedRect",
+          "svg:fill": "#72A6BD",
+          "line-class": "org.xmind.branchConnection.roundedElbow",
+          "line-color": "#35455B",
+          "line-width": "2pt",
+          "fo:text-align": "center",
+          "fo:text-transform": "manual",
+          "border-line-color": "#72A6BD",
+          "border-line-width": "2pt"
+        },
+        "styleId": "54ab5d55d189b398b2d2289cf8",
+        "type": "topic"
+      },
+      "summary": {
+        "properties": {
+          "line-color": "#35455B"
+        },
+        "styleId": "7f09798b738993521dd9c94049",
+        "type": "summary"
+      },
+      "summaryTopic": {
+        "properties": {
+          "svg:fill": "#35455B",
+          "fo:font-family": "Open Sans",
+          "fo:font-weight": "normal",
+          "fo:font-size": "16pt",
+          "line-width": "2pt",
+          "line-color": "#35455B"
+        },
+        "styleId": "5a28b5f52a9aa0a0fbec18924d",
+        "type": "topic"
+      },
+      "boundary": {
+        "properties": {
+          "line-color": "#35455B",
+          "svg:fill": "#E2E9F1",
+          "fo:color": "#FFFFFF",
+          "fo:font-family": "Open Sans",
+          "fo:font-weight": "normal"
+        },
+        "styleId": "6a984ff568dbe4f7c9736a29c8",
+        "type": "boundary"
+      },
+      "relationship": {
+        "properties": {
+          "line-width": "4pt",
+          "line-color": "#35455B",
+          "fo:color": "#35455B"
+        },
+        "styleId": "3beafd12dbf88b940cc98b03ce",
+        "type": "relationship"
+      },
+      "map": {
+        "properties": {
+          "svg:fill": "#ECF4F9",
+          "line-tapered": "none"
+        },
+        "styleId": "eaeba7843908d25e210c7b7802",
+        "type": "map"
+      }
+    },
+    "topicPositioning": "fixed",
+    "relationships": [],
+    "legend": {
+      "visibility": "hidden",
+      "position": {
+        "x": 277,
+        "y": -374.5
+      }
+    },
+    "topicOverlapping": "none",
+    "coreVersion": "2.79.0"
+  }
+]
