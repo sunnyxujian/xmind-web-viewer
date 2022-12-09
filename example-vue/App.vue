@@ -7,6 +7,8 @@
     <input ref="fileRef" @input="onOpenFile" type="file" style="display: none" />
   </header>
   <div id="page-content" ref="contentRef"></div>
+  <!-- <div>{{ mouseMoveX }} | {{ mouseMoveY }}</div>
+  <div>{{ scrollTop }} | {{ scrollLeft }}</div> -->
   <div class="scale-btn">
     <span class="current-scale" @click="() => (showScale = true)">{{ scalePercent(scale) }}</span>
     <ul class="scale-list" v-show="showScale">
@@ -30,6 +32,12 @@ export default {
       scale: 1,
       scaleList: [0.2, 0.5, 0.8, 1, 1.2, 1.5, 2, 3],
       showScale: false,
+      positionX: 0,
+      positionY: 0,
+      mouseMoveX: 0,
+      mouseMoveY: 0,
+      scrollTop: 0,
+      scrollLeft: 0,
     }
   },
   computed: {},
@@ -88,15 +96,20 @@ export default {
       const rendererContainer = document.createElement('div')
       rendererContainer.setAttribute(
         'style',
-        `width: ${width * 2}; height: ${height * 2}; position: relative;`,
+        `width: ${width * 2}; height: ${height * 2}; position: relative; cursor: grab;`,
       )
+      // rendererContainer.setAttribute('draggable', true)
       rendererContainer.className = 'sheet-container'
       renderer.svg.addTo(rendererContainer)
       rendererContainer.style.backgroundColor = renderer.svg.node.style.backgroundColor
       container.append(rendererContainer)
 
       renderer.translate(width + rendererBounds.x, height + rendererBounds.y)
-      container.scrollTo(width - clientWidth / 2, height - clientHeight / 2)
+      this.scrollLeft = width - clientWidth / 2
+      this.scrollTop = height - clientHeight / 2
+      container.scrollTo(this.scrollLeft, this.scrollTop)
+
+      this.bindTouch(rendererContainer)
     },
     openDialog() {
       this.$refs.fileRef.click()
@@ -109,6 +122,41 @@ export default {
       this.scale = scale
       this.load(this.sheets, scale)
       this.renderer.svg.scale(scale)
+    },
+    bindTouch(el) {
+      el.addEventListener('mousedown', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        el.style.cursor = 'grabbing'
+        el.addEventListener('mousemove', this.onMouseMove)
+        this.positionX = e.clientX
+        this.positionY = e.clientY
+
+        const container = this.$refs.contentRef
+        this.scrollTop = container.scrollTop
+        this.scrollLeft = container.scrollLeft
+      })
+      el.addEventListener('mouseup', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        el.style.cursor = 'grab'
+        el.removeEventListener('mousemove', this.onMouseMove)
+      })
+    },
+    onMouseMove(event) {
+      // const client = el.getReactCle
+      // console.log(e)
+
+      const container = this.$refs.contentRef
+      const moveX = event.clientX
+      const moveY = event.clientY
+      this.mouseMoveX = moveX - this.positionX
+      this.mouseMoveY = moveY - this.positionY
+      const Y = this.scrollTop - this.mouseMoveY
+      const X = this.scrollLeft - this.mouseMoveX
+      // console.log('scrollLeft==>', scrollLeft /* 'scrollTop==>', scrollTop */)
+      console.log('X==>', X /* 'Y==>', Y */)
+      container.scrollTo(X, Y)
     },
   },
 }
@@ -126,11 +174,11 @@ export default {
   margin-top: 40px;
   overflow: scroll;
 }
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 0;
   height: 0;
   background-color: transparent;
-} */
+}
 header {
   display: flex;
   height: 40px;
